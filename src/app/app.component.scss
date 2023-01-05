@@ -76,6 +76,42 @@ header{
     }
 }
 
+// .example-form {
+//     min-width: 150px;
+//     max-width: 500px;
+//     width: 100%;
+// }
+
+// .example-full-width {
+//     width: 100%;
+//     border: 1.5px solid rgb(0, 0, 0);
+//     border-radius: 5px 5px 5px 5px;
+// }
+
+// .example-input {
+//     max-width: 100%;
+//     width: 300px;
+// }
+
+// .mat-autocomplete{
+//     border: 1.5px solid rgb(0, 0, 0);
+//     border-radius: 5px 5px 5px 5px;
+// }
+
+
+
+.mat-option{
+    background: #319fc7;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    transition: 0.5s;
+}
+
+.mat-option:hover{
+    background: #b7b8b8;
+    transition: 0.5s;
+}
+
 .header2{
     background-color: #05336b;;
 }

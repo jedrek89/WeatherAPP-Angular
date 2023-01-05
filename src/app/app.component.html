@@ -9,13 +9,17 @@
 
     <div class="headerSiteTitle">Weather APP</div>
     <div class="searchBar">
-      <!-- <mat-slide-toggle>Toggle me!</mat-slide-toggle> -->
-        <input class="search" type="text" placeholder="Chose city (Poland)" [matAutocomplete]="auto">
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let option of cities" [value]="option">
-              {{option}}
-            </mat-option>
-          </mat-autocomplete>
+          <form class="example-form">
+            <input class="search" type="text" placeholder="Select city (Poland only)" [formControl]="control" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+                {{city}}
+              </mat-option>
+            </mat-autocomplete>
+          </form>
+          
+          
+          
     </div>
   </header>
   <div class="header2">header2</div>

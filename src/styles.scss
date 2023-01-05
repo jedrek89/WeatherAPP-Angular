@@ -13,6 +13,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $WeatherAPP-Angular-primary: mat.define-palette(mat.$indigo-palette);
+
 // exapmples https://m1.material.io/style/color.html#
 $WeatherAPP-Angular-accent: mat.define-palette(mat.$blue-palette, A200, A100, A400);
 
@@ -38,3 +39,4 @@ color: (
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
