@@ -8,6 +8,6 @@ import { WeatherService } from './services/weather.service';
 })
 export class AppComponent {
   title = 'WeatherAPP-Angular';
-  cities : string[] =["Warsaw"];
+  cities : string[] =["Warszawa", "Lódź", "Wrocław", "Poznań", "Gdańsk", "Szczeciń", "Bydgoszcz"];
 }
 

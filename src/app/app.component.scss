@@ -38,9 +38,9 @@ header{
     .headerSiteTitle{
         align-self: center;
         cursor: pointer;
-        width: 30%;
+        width: fit-content;
         height: 100%;
-        padding-left: 5px;
+        padding: 0px 50px 0px 5px;
         font-style: $font-family_1;
         font-weight: 700;
         font-size: 25px;
@@ -55,7 +55,7 @@ header{
         width: 60%;
         height: 50%;
         align-self: center;
-        padding-left: 20px;
+        padding-left: 0px;
         background: #1d5e75;
     }
     .search{
@@ -67,13 +67,12 @@ header{
         background-position-x: right 5px;
         background-position-y: center;
         background-repeat: no-repeat;
-        border: 1px solid rgb(0, 0, 0);
+        border: 1.5px solid rgb(0, 0, 0);
         border-radius: 5px 5px 5px 5px;
         padding-left: 5px;
         font-size: 16px;
         font-family: $font-family_1;
         color: rgb(255, 255, 255);
-        text-decoration: double;
     }
 }
 
@@ -92,6 +91,12 @@ header{
     margin: 5% 10% 0% 5%;
     width: 90%;
     height: 50px;
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    text-align: center;
 }
 
 @media screen and (max-width: 992px){
