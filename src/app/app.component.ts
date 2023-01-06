@@ -5,6 +5,11 @@ import { Observable } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 
+interface Food {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,23 +17,30 @@ import { map } from 'rxjs/operators';
 })
 
 export class AppComponent implements OnInit{
-  control = new FormControl('');
+  currentDate = new Date();
+  myControl = new FormControl('');
+  autocompleteStatus: any;
+  input1Value: any;
+  input1ValFilter: any;
+
   cities: string[] = ['Warszawa', 'Łódź', 'Wrocław', 'Poznań', 'Gdańsk', 'Szczecin', 'Bydgoszcz'];
-  filteredCities!: Observable<string[]>; // Compile error without !
-  
+
   ngOnInit() {
-    this.filteredCities = this.control.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );
   }
-  
-  private _filter(value: string): string[] {
-    const filterValue = this._normalizeValue(value);
-    return this.cities.filter(city => this._normalizeValue(city).includes(filterValue));
+
+  autocomplete1_confirm(data: any){
+
   }
-  
-  private _normalizeValue(value: string): string {
-    return value.toLowerCase().replace(/\s/g, '');
+
+  getInput1(data: any){
+    console.log("input1val: ", data)
   }
-  }
+
+
+
+
+
+}
+
+
+
