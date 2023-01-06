@@ -19,24 +19,34 @@ interface Food {
 export class AppComponent implements OnInit{
   currentDate = new Date();
   myControl = new FormControl('');
-  autocompleteStatus: any;
+  autocompleteStatus1: any;
   input1Value: any;
-  input1ValFilter: any;
 
   cities: string[] = ['Warszawa', 'Łódź', 'Wrocław', 'Poznań', 'Gdańsk', 'Szczecin', 'Bydgoszcz'];
 
   ngOnInit() {
+    this.autocompleteStatus1 = 0;
   }
 
   autocomplete1_confirm(data: any){
-
+    console.log("chosed otpion", data);
+    this.autocompleteStatus1 = 0;
+    this.input1Value = data;
   }
 
   getInput1(data: any){
-    console.log("input1val: ", data)
+    console.log("input1val: ", data);
   }
 
+  showAutocomplete1(){
+    console.log("show autocomplete");
+    this.autocompleteStatus1 = 1;
+  }
 
+  hideAutocomplete1(){
+    console.log("hide autocomplete");
+    this.autocompleteStatus1 = 0;
+  }
 
 
 

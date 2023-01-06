@@ -1,16 +1,16 @@
-<!-- <body (click)="autocomplete1_Off()" (click)="autocomplete2_Off()"></body> -->
+<!-- <body (click)="hideAutocomplete1()"></body> -->
 <body>
   <div class="content">
     <div class="box1">
-      <div>
-        <input #city class="searchBar" placeholder="Chose city" type="text" [(ngModel)]="input1Value" value="{{input1Value}}" (keyup)="getInput1(input1Value)" >
-          <div [ngClass]="{'flyFromValAutocomplete': this.autocompleteStatus == 1, 'hideItem': this.autocompleteStatus == 0}">
-            <option (click)="autocomplete1_confirm(option)" [value]="option" *ngFor="let option of input1ValFilter; let i=index;">{{option}}</option>
+      <div class="searchBox1">
+        <input (click)="showAutocomplete1()" #city class="searchBar" placeholder="Chose city from list" type="text" [(ngModel)]="input1Value" value="{{input1Value}}" (keyup)="getInput1(input1Value)" >
+          <div [ngClass]="{'showAutocomplete1': this.autocompleteStatus1 == 1, 'hideItem': this.autocompleteStatus1 == 0}">
+            <option class="option" (click)="autocomplete1_confirm(city)" [value]="city" *ngFor="let city of cities; let i=index;">{{city}}</option>
           </div>
       </div>
     </div>
   </div>
-  <footer class="footer">{{currentDate | date: 'yyyy'}} Copyright ©JEDREK89</footer>
+  <footer class="footer">{{currentDate | date: 'yyyy'}} Copyright&nbsp;<a class="footerLink" href="https://github.com/jedrek89">©JEDREK89</a></footer>
 </body>
 
 
