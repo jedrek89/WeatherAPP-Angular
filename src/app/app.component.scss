@@ -49,69 +49,59 @@ body{
         margin: 20px 20px 0px 20px;
         padding: 5px 0px 0px 5px;
         z-index: 1;
-        .searchBox1{
-            all: unset;
-            font-size: 20px;
-            font-family: $font-family_2;
-            transition: 0.5s;
-
-            .searchBar{
-                width: 200px;
-                height: 30px;
-                padding-left: 10px;
-                font-size: 20px;
-                background: rgb(255, 255, 255);
-                border-radius: 5px;
-                border: 1px solid black;
-                transition: 0.5s;
-
-            }
-
-            .showAutocomplete1{
-                background: rgb(255, 255, 255);
-                height: fit-content;
-                border-radius: 5px;
-                border: 1px solid black;
-                transition: 0.5s;
-
-            }
-        
-            .option{
-                height: fit-content;
-                cursor: pointer;
-                padding-left: 5px;
-                transition: 0.5s;
-
-            }
-        
-            .option:hover{
-                background:  rgb(156,188,199);
-                transition: 0.5s;
-
-            }
+    .searchBox1{
+        all: unset;
+        font-size: 20px;
+        font-family: $font-family_2;
+        transition: 0.5s;
+    .searchBar{
+        width: 200px;
+        height: 30px;
+        padding-left: 10px;
+        font-size: 20px;
+        background: rgb(255, 255, 255);
+        border-radius: 5px;
+        border: 1px solid black;
+        transition: 0.5s;
+        }
+    .showAutocomplete1{
+        background: rgb(255, 255, 255);
+        height: fit-content;
+        border-radius: 5px;
+        border: 1px solid black;
+        transition: 0.5s;
+        }
+    .option{
+        height: fit-content;
+        cursor: pointer;
+        padding-left: 5px;
+        transition: 0.5s;
+        }
+    .option:hover{
+        background:  rgb(156,188,199);
+        transition: 0.5s;
+        }
     }
+}
 
-    .box1_R1_C2{
-        height: 15%;
+.box1_R1_C2{
+    height: 15%;
 
-    }
+}
 
-    .box1_R1_C3{
-        height: 45%;
+.box1_R1_C3{
+    height: 45%;
 
-    }
+}
 
-    .box1_R1_C4{
-        height: 20%;
-
-    }
+.box1_R1_C4{
+    height: 20%;
 }
 
 .box2_R2{
     width: 70%;
     height: 100%;
 }
-
 
 
 
