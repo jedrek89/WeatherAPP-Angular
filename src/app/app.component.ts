@@ -45,7 +45,7 @@ export class AppComponent implements OnInit{
 
   hideAutocomplete1(){
     console.log("hide autocomplete");
-    this.autocompleteStatus1 = 0;
+    (this.autocompleteStatus1 == 1) ? this.autocompleteStatus1 = 0 : "";
   }
 
 

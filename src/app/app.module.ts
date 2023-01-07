@@ -8,7 +8,7 @@ import { FormControl } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { observable, Observable } from 'rxjs';
+import { from, observable, Observable } from 'rxjs';
 import { MatSelectModule } from '@angular/material/select'; 
 
 @NgModule({
@@ -29,4 +29,6 @@ import { MatSelectModule } from '@angular/material/select';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

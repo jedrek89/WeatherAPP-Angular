@@ -1,13 +1,31 @@
-<!-- <body (click)="hideAutocomplete1()"></body> -->
 <body>
   <div class="content">
     <div class="box1">
-      <div class="searchBox1">
-        <input (click)="showAutocomplete1()" #city class="searchBar" placeholder="Chose city from list" type="text" [(ngModel)]="input1Value" value="{{input1Value}}" (keyup)="getInput1(input1Value)" >
-          <div [ngClass]="{'showAutocomplete1': this.autocompleteStatus1 == 1, 'hideItem': this.autocompleteStatus1 == 0}">
+      <div class="box1_R1">
+        <div class="box1_R1_C1">
+          <div (clickOutside)="hideAutocomplete1()" class="searchBox1">
+            <input (click)="showAutocomplete1()" #city class="searchBar" placeholder="Chose city from list" type="text" [(ngModel)]="input1Value" value="{{input1Value}}" (keyup)="getInput1(input1Value)" >
+            <div [ngClass]="{'showAutocomplete1': this.autocompleteStatus1 == 1, 'hideItem': this.autocompleteStatus1 == 0}">
             <option class="option" (click)="autocomplete1_confirm(city)" [value]="city" *ngFor="let city of cities; let i=index;">{{city}}</option>
+            </div>
           </div>
+        </div>
+
+        <div class="box1_R1_C2">boxR1_C2</div>
+        <div class="box1_R1_C3">boxR1_C3</div>
+        <div class="box1_R1_C4">boxR1_C4</div>
       </div>
+
+
+
+      
+      
+
+
+
+
+      <div>boxR2</div>
+
     </div>
   </div>
   <footer class="footer">{{currentDate | date: 'yyyy'}} Copyright&nbsp;<a class="footerLink" href="https://github.com/jedrek89">©JEDREK89</a></footer>
