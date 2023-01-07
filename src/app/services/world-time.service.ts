@@ -8,7 +8,7 @@ export class WorldTimeService {
 
   constructor(private http: HttpClient) { }
 
-  getTimeFromAPI(continent: string, city: string){
+  getTimeFromAPI(){
     return this.http.get("https://worldtimeapi.org/api/timezone/europe/berlin");
   };
 
