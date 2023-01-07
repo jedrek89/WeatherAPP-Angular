@@ -9,6 +9,7 @@ $font-family_2:  "Cursive", Helvetica, sans-serif;
 
 .hideItem{
     display: none;
+    transition: 0.5s;
 }
 
 body{
@@ -46,15 +47,13 @@ body{
     z-index: 0;
     .box1_R1_C1{
         height: 20%;
-        margin: 20px 20px 0px 20px;
-        padding: 5px 0px 0px 5px;
+        padding: 20px 0px 0px 14px;
         z-index: 1;
     .searchBox1{
         all: unset;
         font-size: 20px;
         font-family: $font-family_2;
         transition: 0.5s;
-    .searchBar{
         width: 200px;
         height: 30px;
         padding-left: 10px;
@@ -63,10 +62,11 @@ body{
         border-radius: 5px;
         border: 1px solid black;
         transition: 0.5s;
-        }
+    }
     .showAutocomplete1{
         background: rgb(255, 255, 255);
         height: fit-content;
+        width: 210px;
         border-radius: 5px;
         border: 1px solid black;
         transition: 0.5s;
@@ -74,27 +74,30 @@ body{
     .option{
         height: fit-content;
         cursor: pointer;
+        font-size: 20px;
+        font-family: $font-family_2;
         padding-left: 5px;
         transition: 0.5s;
         }
     .option:hover{
-        background:  rgb(156,188,199);
+        background: rgb(156,188,199);
         transition: 0.5s;
         }
     }
 }
 
 .box1_R1_C2{
+    padding: 20px 0px 0px 14px;
     height: 15%;
-
 }
 
 .box1_R1_C3{
+    padding: 20px 0px 0px 14px;
     height: 45%;
-
 }
 
 .box1_R1_C4{
+    padding: 20px 0px 0px 14px;
     height: 20%;
 }
 
@@ -103,9 +106,6 @@ body{
     height: 100%;
 }
 
-
-
-}
 
 
 

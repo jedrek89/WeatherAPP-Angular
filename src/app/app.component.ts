@@ -5,11 +5,6 @@ import { Observable } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 
-interface Food {
-  value: string;
-  viewValue: string;
-}
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
