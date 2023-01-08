@@ -46,8 +46,9 @@ body{
     height: 100%;
     z-index: 0;
     .box1_R1_C1{
-        height: 20%;
+        height: 15%;
         padding: 20px 0px 0px 14px;
+        justify-content: center;
         z-index: 1;
     .searchBox1{
         all: unset;
@@ -69,6 +70,7 @@ body{
         width: 210px;
         border-radius: 5px;
         border: 1px solid black;
+        opacity: 0.9;
         transition: 0.5s;
         }
     .option{
@@ -84,22 +86,53 @@ body{
         transition: 0.5s;
         }
     }
+    // Date & time from API
+    .box1_R1_C2{
+        padding: 5px 0px 0px 14px;
+        height: 20%;
+        display: flex;
+        flex-direction: column;
+        font-family: $font-family_1;
+        font-size: 20px;
+        .timeApi{
+            padding-top: 5px;
+        }
+        .dayOfWeekAPI{
+            padding-top: 5px;
+        }
+        .dateAPI{
+            padding-top: 5px;
+        }
+    }
+    
+    // Weather condition from API
+    .box1_R1_C3{
+        padding-top: 0px;
+        display: flex;
+        flex-direction: column;
+        height: 45%;
+        .weatherIcon1{
+            padding: 6px 0px 0px 14px;
+            width: 200px;
+            height: 200px;
+        }
+    }
+    
+    .box1_R1_C4{
+        display: flex;
+        flex-direction: row;
+        padding: 20px 0px 0px 14px;
+        height: 20%;
+        .humidity{
+            width: 50%;
+        }
+        .windSpeed{
+            width: 50%;
+        }
+    }
 }
 
-.box1_R1_C2{
-    padding: 20px 0px 0px 14px;
-    height: 15%;
-}
 
-.box1_R1_C3{
-    padding: 20px 0px 0px 14px;
-    height: 45%;
-}
-
-.box1_R1_C4{
-    padding: 20px 0px 0px 14px;
-    height: 20%;
-}
 
 .box2_R2{
     width: 70%;
