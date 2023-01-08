@@ -1,11 +1,12 @@
+$font-family_1: "Arial Black", "Gadget", sans-serif;
+$font-family_2:  "Cursive", Helvetica, sans-serif;
+
+
 *{
 	margin: 0;
 	padding: 0;
     box-sizing: border-box;
 }
-
-$font-family_1: "Arial Black", "Gadget", sans-serif;
-$font-family_2:  "Cursive", Helvetica, sans-serif;
 
 .hideItem{
     display: none;
@@ -27,14 +28,15 @@ body{
 
 .box1{
     margin: auto;
-    width: 800px;
+    width: 900px;
     height: 400px;
     display: flex;
     flex-direction: row;
     border-radius: 30px;
     border: 1px solid black;
-    background: rgb(156,188,199);
-    background: linear-gradient(180deg, rgba(156,188,199,1) 0%, rgba(255,255,255,1) 100%); 
+    background: rgb(255, 255, 255);
+    // background: rgb(156,188,199);
+    // background: linear-gradient(180deg, rgba(156,188,199,1) 0%, rgba(255,255,255,1) 100%); 
     overflow: hidden;
     box-shadow: 3px 2px 2px rgb(0, 0, 0);
 }
@@ -42,7 +44,7 @@ body{
 .box1_R1{
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 25%;
     height: 100%;
     z-index: 0;
     .box1_R1_C1{
@@ -151,11 +153,47 @@ body{
     }
 }
 
-
-
 .box2_R2{
-    width: 70%;
+    width: 75%;
     height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    .box2_R2_R1, .box2_R2_R2,.box2_R2_R3, .box2_R2_R4{
+        width: 20%;
+        height: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: antiquewhite;
+        border-radius: 20px;
+        border: 1px solid black;
+        transition: 500ms;
+    }
+    .box2_R2_R1 :hover{
+        cursor: pointer;
+        transform: scale(1.3);
+        transition: 500ms;
+    }
+
+    .box2_R2_R2 :hover{
+        cursor: pointer;
+        transform: scale(1.3);
+        transition: 500ms;
+    }
+
+    .box2_R2_R3 :hover{
+        cursor: pointer;
+        transform: scale(1.3);
+        transition: 500ms;
+    }
+
+    .box2_R2_R4 :hover{
+        cursor: pointer;
+        transform: scale(1.3);
+        transition: 500ms;
+    }
 }
 
 
