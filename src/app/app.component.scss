@@ -114,18 +114,20 @@ body{
         font-family: $font-family_1;
         font-size: 20px;
         .weatherIcon1{
-            padding: 10px 0px 0px 14px;
-            width: 200px;
-            height: 200px;
+            padding: 15px 0px 0px 0px;
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            justify-content: center;
         }
         .temperature1{
-            padding: 10px 0px 0px 0px;
+            padding: 15px 0px 0px 0px;
             width: 100%;
             height: fit-content;
             text-align: center;
         }
         .description1{
-            padding: 10px 0px 0px 0px;
+            padding: 5px 0px 0px 10px;
             width: 100%;
             height: fit-content;
             text-align: center;
