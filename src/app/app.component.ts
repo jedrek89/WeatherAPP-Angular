@@ -54,10 +54,12 @@ export class AppComponent implements OnInit {
   hideAutocomplete1(){
     console.log("hide autocomplete");
     (this.autocompleteStatus1 == 1) ? this.autocompleteStatus1 = 0 : "";
+    return this.autocompleteStatus1;
   }
 
   // Set background for R1 of box
   setBackground1(){
+    
     return this.currentConditionBackground;
   }
 

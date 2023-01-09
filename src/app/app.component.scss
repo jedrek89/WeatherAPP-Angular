@@ -26,6 +26,7 @@ body{
     align-items: center;
 }
 
+
 .box1{
     margin: auto;
     width: 900px;
@@ -48,118 +49,133 @@ body{
     z-index: 0;
     background-position: center;
     background-repeat: no-repeat;
-    .box1_R1_C1{
-        height: 15%;
-        padding: 20px 0px 0px 14px;
-        justify-content: center;
-        z-index: 1;
-    .searchBox1{
-        all: unset;
-        font-size: 20px;
-        font-family: $font-family_2;
-        transition: 0.5s;
-        width: 200px;
-        height: 30px;
-        padding-left: 10px;
-        font-size: 20px;
-        background: rgb(255, 255, 255);
-        opacity: 0.7;
-        border-radius: 5px;
-        border: 1px solid black;
-        transition: 0.5s;
+    background-size: cover;
+}
+
+.box1_R1_C1{
+    height: 15%;
+    padding: 20px 0px 0px 14px;
+    justify-content: center;
+    z-index: 1;
+}
+
+.searchBox1{
+    all: unset;
+    font-size: 20px;
+    font-family: $font-family_2;
+    transition: 0.5s;
+    width: 200px;
+    height: 30px;
+    padding-left: 10px;
+    font-size: 20px;
+    background: rgb(255, 255, 255);
+    opacity: 0.7;
+    border-radius: 5px;
+    border: 1px solid black;
+    transition: 0.5s;
+}
+
+.showAutocomplete1{
+    background: rgb(255, 255, 255);
+    max-height: 325px;
+    width: 210px;
+    border-radius: 5px;
+    border: 1px solid black;
+    opacity: 0.95;
+    transition: 0.5s;
+    overflow-y: scroll;
+}
+
+.option{
+    height: fit-content;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: $font-family_2;
+    padding-left: 5px;
+    transition: 0.5s;
+}
+
+.option:hover{
+    background: rgb(185, 224, 237);
+    transition: 0.5s;
+}
+
+// Date & time from API
+.box1_R1_C2{
+    padding: 5px 0px 0px 14px;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    font-family: $font-family_1;
+    font-size: 20px;
+}
+
+.timeApi{
+    padding-top: 5px;
+}
+
+.dayOfWeekAPI{
+    padding-top: 5px;
+}
+
+.dateAPI{
+    padding-top: 5px;
+}
+
+// Weather condition from API
+.box1_R1_C3{
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+    height: 45%;
+    font-family: $font-family_1;
+    font-size: 20px;
+}
+
+.weatherIcon1{
+    padding: 15px 0px 0px 0px;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+}
+
+.temperature1{
+    padding: 15px 0px 0px 0px;
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+}
+
+.description1{
+    padding: 5px 0px 0px 10px;
+    width: 100%;
+    height: fit-content;
+    text-align: center;
     }
-    .showAutocomplete1{
-        background: rgb(255, 255, 255);
-        max-height: 325px;
-        width: 210px;
-        border-radius: 5px;
-        border: 1px solid black;
-        opacity: 0.95;
-        transition: 0.5s;
-        overflow-y: scroll;
-        }
-    .option{
-        height: fit-content;
-        cursor: pointer;
-        font-size: 20px;
-        font-family: $font-family_2;
-        padding-left: 5px;
-        transition: 0.5s;
-        }
-    .option:hover{
-        background: rgb(185, 224, 237);
-        transition: 0.5s;
-        }
-    }
-    // Date & time from API
-    .box1_R1_C2{
-        padding: 5px 0px 0px 14px;
-        height: 20%;
-        display: flex;
-        flex-direction: column;
-        font-family: $font-family_1;
-        font-size: 20px;
-        .timeApi{
-            padding-top: 5px;
-        }
-        .dayOfWeekAPI{
-            padding-top: 5px;
-        }
-        .dateAPI{
-            padding-top: 5px;
-        }
-    }
-    
-    // Weather condition from API
-    .box1_R1_C3{
-        padding-top: 0px;
-        display: flex;
-        flex-direction: column;
-        height: 45%;
-        font-family: $font-family_1;
-        font-size: 20px;
-        .weatherIcon1{
-            padding: 15px 0px 0px 0px;
-            width: 100%;
-            height: fit-content;
-            display: flex;
-            justify-content: center;
-        }
-        .temperature1{
-            padding: 15px 0px 0px 0px;
-            width: 100%;
-            height: fit-content;
-            text-align: center;
-        }
-        .description1{
-            padding: 5px 0px 0px 10px;
-            width: 100%;
-            height: fit-content;
-            text-align: center;
-        }
-    }
-    
-    .box1_R1_C4{
-        display: flex;
-        flex-direction: row;
-        padding: 20px 0px 0px 0px;
-        height: 20%;
-        font-family: $font-family_1;
-        font-size: 16px;
-        text-align: center;
-        .humidity1{
-            width: 50%;
-        }
-        .windSpeed1{
-            width: 50%;
-        }
-    }
+
+.box1_R1_C4{
+    display: flex;
+    flex-direction: row;
+    padding: 20px 0px 0px 0px;
+    height: 20%;
+    font-family: $font-family_1;
+    font-size: 16px;
+    text-align: center;
+}
+
+.humidity1{
+    width: 50%;
+}
+
+.windSpeed1{
+    width: 50%;
 }
 
 .box1_R2{
     width: 75%;
     height: 100%;
-    background-image: url(../assets/warsaw.jpg);
+    // background-image: url(../assets/warsaw.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -167,71 +183,66 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    .box1_R2_R1{
-        width: 20%;
-        height: 70%;
-        display: flex;
-        flex-direction: column;
-        background: rgb(255, 255, 255);
-        border-radius: 20px;
-        border: 1px solid black;
-        transition: 500ms;
-        opacity: 0.8;
-    } 
-    .box1_R2_R2, .box1_R2_R3, .box1_R2_R4{
-        width: 20%;
-        height: 70%;
-        display: flex;
-        flex-direction: column;
-        background: rgb(255, 255, 255);
-        border-radius: 20px;
-        border: 1px solid black;
-        opacity: 0.8;
-        transition: 500ms;
-    }
-
-    .box1_R2_date1,  .box1_R2_date2,  .box1_R2_date3,  .box1_R2_date4{
-        padding-top: 40%;
-        display: flex;
-        justify-content: center;
-        font-size: 25px;
-        font-weight: 600;
-        font-family: $font-family_2;
-        text-align: center;
-        height: 33.3%;
-    }
-
-    .box1_R2_weatherIcon1, .box1_R2_weatherIcon2, .box1_R2_weatherIcon3, .box1_R2_weatherIcon4{
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        height: 33.3%;
-    }
-
-    .box1_R2_temperature1, .box1_R2_temperature2, .box1_R2_temperature3, .box1_R2_temperature4{
-        display: flex;
-        justify-content: center;
-        font-size: 25px;
-        font-weight: 600;
-        font-family: $font-family_2;
-        width: 100%;
-        height: 33.3%;
-    }
-
-    .warsawBackground{
-        background-image: url(../assets/warsaw.jpg);
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-
 }
 
-    .box1_R2_R1:hover, .box1_R2_R2:hover, .box1_R2_R3:hover, .box1_R2_R4:hover{
-        cursor: pointer;
-        transform: scale(1.1);
-        transition: 500ms;       
-        opacity: 1;
-    }
+.box1_R2_R1{
+    width: 20%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    border: 1px solid black;
+    transition: 500ms;
+    opacity: 0.8;
+} 
+
+.box1_R2_R2, .box1_R2_R3, .box1_R2_R4{
+    width: 20%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    border: 1px solid black;
+    opacity: 0.9;
+    transition: 500ms;
+}
+
+.box1_R2_date1,  .box1_R2_date2,  .box1_R2_date3,  .box1_R2_date4{
+    padding-top: 40%;
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: 600;
+    font-family: $font-family_2;
+    text-align: center;
+    height: 33.3%;
+}
+
+.box1_R2_weatherIcon1, .box1_R2_weatherIcon2, .box1_R2_weatherIcon3, .box1_R2_weatherIcon4{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 33.3%;
+}
+
+.box1_R2_temperature1, .box1_R2_temperature2, .box1_R2_temperature3, .box1_R2_temperature4{
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: 600;
+    font-family: $font-family_2;
+    width: 100%;
+    height: 33.3%;
+}
+
+.box1_R2_R1:hover, .box1_R2_R2:hover, .box1_R2_R3:hover, .box1_R2_R4:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 500ms;       
+    opacity: 1;
+}
 
 
 .footer{
@@ -250,33 +261,34 @@ body{
     }
 }
 
-@media screen and (max-width: 992px){
 
-    header{
-        padding: 0;
-        width: 100%;
-        height: fit-content;
-        display: flex;
-        flex-direction: column;
-        .headerLogoArea{
-            width: 100%;
-        }
-        .headerSiteTitle{
-            width: 100%;
-            transition: 0.5s;
-            padding-left: 5px;
-        }
-        .searchBar{
-            width: 100%;
-            height: 50%;
-            align-self: center;
-            padding: 10px 0px 10px 5px;
-        }
-    }
-
-}
 
 @media screen and (max-width: 992px){
 
     
+.box1{
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+}
+
+.box1_R1{
+    width: 100%;
+    height: fit-content;
+}
+
+.box1_R2{
+    width: 100%;
+    flex-direction: column;
+    justify-content: baseline;
+}
+
+.footer{
+    height: fit-content;
+}
+
+
+
+
+
 }
