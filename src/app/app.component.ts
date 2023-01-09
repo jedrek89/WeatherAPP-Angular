@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   worldTimeDataFromApi: any;
   dayOfWeek: string [] = ["Sunday", "Monday", 'Tuesday', 'Wednesday', "Thursday", "Friday", "Saturday"];
   cities: string[] = ['Warszawa', 'Łódź', 'Wrocław', 'Poznań', 'Gdańsk', 'Szczecin', 'Bydgoszcz'];
-
+  warsawBackground = '../assets/warsaw.jpg'
   constructor(private WorldTimeService: WorldTimeService) { }
 
   ngOnInit() {
