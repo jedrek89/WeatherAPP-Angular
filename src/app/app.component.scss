@@ -167,15 +167,26 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    .box1_R2_R1, .box1_R2_R2, .box1_R2_R3, .box1_R2_R4{
+    .box1_R2_R1{
         width: 20%;
         height: 70%;
         display: flex;
         flex-direction: column;
         background: rgb(255, 255, 255);
-        opacity: 0.8;
         border-radius: 20px;
         border: 1px solid black;
+        transition: 500ms;
+        opacity: 0.8;
+    } 
+    .box1_R2_R2, .box1_R2_R3, .box1_R2_R4{
+        width: 20%;
+        height: 70%;
+        display: flex;
+        flex-direction: column;
+        background: rgb(255, 255, 255);
+        border-radius: 20px;
+        border: 1px solid black;
+        opacity: 0.8;
         transition: 500ms;
     }
 
@@ -209,35 +220,12 @@ body{
 
 }
 
-
-    .box1_R2_R1:hover{
+    .box1_R2_R1:hover, .box1_R2_R2:hover, .box1_R2_R3:hover, .box1_R2_R4:hover{
         cursor: pointer;
+        transform: scale(1.1);
+        transition: 500ms;       
         opacity: 1;
-        transition: 500ms;
     }
-
-    // .box1_R2_R2 :hover{
-    //     cursor: pointer;
-    //     transform: scale(1.3);
-    //     transition: 500ms;
-    // }
-
-    // .box1_R2_R3 :hover{
-    //     cursor: pointer;
-    //     transform: scale(1.3);
-    //     transition: 500ms;
-    // }
-
-    // .box1_R2_R4 :hover{
-    //     cursor: pointer;
-    //     transform: scale(1.3);
-    //     transition: 500ms;
-    // }
-
-
-
-
-
 
 
 .footer{

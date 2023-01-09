@@ -14,14 +14,14 @@ import { WorldTimeService } from './services/world-time.service';
 
 
 export class AppComponent implements OnInit {
+  autocompleteStatus1: any;
+  worldTimeDataFromApi: any;
+  cityBackground: string = ""; 
   currentDate = new Date();
   myControl = new FormControl('');
-  autocompleteStatus1: any;
-  input1Value: any;
-  worldTimeDataFromApi: any;
+  selectedCity: string = "";
   dayOfWeek: string [] = ["Sunday", "Monday", 'Tuesday', 'Wednesday', "Thursday", "Friday", "Saturday"];
-  cities: string[] = ['Warszawa', 'Łódź', 'Wrocław', 'Poznań', 'Gdańsk', 'Szczecin', 'Bydgoszcz'];
-  warsawBackground = '../assets/warsaw.jpg'
+  cities: string[] = ["Warsaw", "London"];
   constructor(private WorldTimeService: WorldTimeService) { }
 
   ngOnInit() {
@@ -30,13 +30,14 @@ export class AppComponent implements OnInit {
       this.worldTimeDataFromApi = data
       console.log(this.worldTimeDataFromApi);
     });
-
   }
 
-  autocomplete1_confirm(data: any){
-    console.log("chosed otpion", data);
+
+  autocomplete1_confirm(data: string){
+    console.log("this.selectedCity", data);
+    this.setBackground();
     this.autocompleteStatus1 = 0;
-    this.input1Value = data;
+    this.selectedCity = data;
   }
 
   getInput1(data: any){
@@ -51,6 +52,16 @@ export class AppComponent implements OnInit {
   hideAutocomplete1(){
     console.log("hide autocomplete");
     (this.autocompleteStatus1 == 1) ? this.autocompleteStatus1 = 0 : "";
+  }
+
+  setBackground(){
+    if (this.selectedCity == this.cities[0]) {
+      this.cityBackground = '../assets/warsaw.jpg';
+    }
+    if (this.selectedCity == this.cities[1]) {
+      this.cityBackground = '../assets/london.jpg'
+    }
+    return this.cityBackground;
   }
 
 
