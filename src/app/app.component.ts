@@ -12,31 +12,31 @@ import { WorldTimeService } from './services/world-time.service';
   styleUrls: ['./app.component.scss']
 })
 
-
 export class AppComponent implements OnInit {
   autocompleteStatus1: any;
   worldTimeDataFromApi: any;
-  cityBackground: string = ""; 
+  cityBackground: string = "";
+  currentConditionBackground: string = "";
   currentDate = new Date();
   myControl = new FormControl('');
   selectedCity: string = "";
   dayOfWeek: string [] = ["Sunday", "Monday", 'Tuesday', 'Wednesday', "Thursday", "Friday", "Saturday"];
-  cities: string[] = ["Warsaw", "London"];
+  cities: string[] = ["Warsaw", "London", "Paris"];
   constructor(private WorldTimeService: WorldTimeService) { }
 
   ngOnInit() {
     this.autocompleteStatus1 = 0;
+    this.currentConditionBackground = '../assets/cloudyBackgroundBlur.jpg';
     this.WorldTimeService.getTimeFromAPI().subscribe((data: any) => {
       this.worldTimeDataFromApi = data
       console.log(this.worldTimeDataFromApi);
     });
   }
 
-
   autocomplete1_confirm(data: string){
     console.log("this.selectedCity", data);
     this.selectedCity = data;
-    this.setBackground();
+    this.setBackground2();
     this.autocompleteStatus1 = 0;
     return this.selectedCity;
   }
@@ -55,13 +55,18 @@ export class AppComponent implements OnInit {
     (this.autocompleteStatus1 == 1) ? this.autocompleteStatus1 = 0 : "";
   }
 
-  setBackground(){
-    (this.selectedCity == this.cities[0]) ? this.cityBackground = '../assets/warsaw.jpg' : "";
-    (this.selectedCity == this.cities[1]) ? this.cityBackground = '../assets/london.jpg' : "";
-    return this.cityBackground;
+  // Set background for R1 of box
+  setBackground1(){
+    return this.currentConditionBackground;
   }
 
-
+  // Set background for R2 of box
+  setBackground2(){
+    (this.selectedCity == this.cities[0]) ? this.cityBackground = '../assets/warsaw.jpg' : "";
+    (this.selectedCity == this.cities[1]) ? this.cityBackground = '../assets/london.jpg' : "";
+    (this.selectedCity == this.cities[2]) ? this.cityBackground = '../assets/paris.jpg' : "";
+    return this.cityBackground;
+  }
 
 }
 

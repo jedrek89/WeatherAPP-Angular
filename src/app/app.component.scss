@@ -46,7 +46,6 @@ body{
     width: 27%;
     height: 100%;
     z-index: 0;
-    background-image: url(../assets/cloudyBackgroundBlur.jpg);
     background-position: center;
     background-repeat: no-repeat;
     .box1_R1_C1{
@@ -194,6 +193,9 @@ body{
         padding-top: 40%;
         display: flex;
         justify-content: center;
+        font-size: 25px;
+        font-weight: 600;
+        font-family: $font-family_2;
         text-align: center;
         height: 33.3%;
     }
@@ -208,6 +210,9 @@ body{
     .box1_R2_temperature1, .box1_R2_temperature2, .box1_R2_temperature3, .box1_R2_temperature4{
         display: flex;
         justify-content: center;
+        font-size: 25px;
+        font-weight: 600;
+        font-family: $font-family_2;
         width: 100%;
         height: 33.3%;
     }
