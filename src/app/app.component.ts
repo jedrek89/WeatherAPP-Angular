@@ -35,9 +35,10 @@ export class AppComponent implements OnInit {
 
   autocomplete1_confirm(data: string){
     console.log("this.selectedCity", data);
+    this.selectedCity = data;
     this.setBackground();
     this.autocompleteStatus1 = 0;
-    this.selectedCity = data;
+    return this.selectedCity;
   }
 
   getInput1(data: any){
