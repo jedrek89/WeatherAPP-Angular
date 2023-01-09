@@ -21,7 +21,8 @@ export class AppComponent implements OnInit {
   myControl = new FormControl('');
   selectedCity: string = "";
   dayOfWeek: string [] = ["Sunday", "Monday", 'Tuesday', 'Wednesday', "Thursday", "Friday", "Saturday"];
-  cities: string[] = ["Warsaw", "London", "Paris"];
+  cities: string[] = ["Amsterdam", "Berlin", "Bern", "Brussels", "Budapest", "Copenhagen", "Dublin", "Helsinki", 
+  "London", "Madrid", "Oslo", "Paris", "Prague", "Rome", "Stockholm", "Warsaw", "Zagreb"];
   constructor(private WorldTimeService: WorldTimeService) { }
 
   ngOnInit() {
@@ -62,9 +63,7 @@ export class AppComponent implements OnInit {
 
   // Set background for R2 of box
   setBackground2(){
-    (this.selectedCity == this.cities[0]) ? this.cityBackground = '../assets/warsaw.jpg' : "";
-    (this.selectedCity == this.cities[1]) ? this.cityBackground = '../assets/london.jpg' : "";
-    (this.selectedCity == this.cities[2]) ? this.cityBackground = '../assets/paris.jpg' : "";
+    this.cityBackground = `../assets/${this.selectedCity}.jpg`
     return this.cityBackground;
   }
 

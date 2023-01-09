@@ -70,12 +70,13 @@ body{
     }
     .showAutocomplete1{
         background: rgb(255, 255, 255);
-        height: fit-content;
+        max-height: 325px;
         width: 210px;
         border-radius: 5px;
         border: 1px solid black;
         opacity: 0.95;
         transition: 0.5s;
+        overflow-y: scroll;
         }
     .option{
         height: fit-content;
@@ -273,4 +274,9 @@ body{
         }
     }
 
+}
+
+@media screen and (max-width: 992px){
+
+    
 }
