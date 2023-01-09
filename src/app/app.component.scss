@@ -175,7 +175,6 @@ body{
 .box1_R2{
     width: 75%;
     height: 100%;
-    // background-image: url(../assets/warsaw.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -263,16 +262,38 @@ body{
 
 .box1_R1{
     width: 100%;
-    height: fit-content;
+    height: 400px;
     transition: 500ms;
 }
 
 .box1_R2{
+    padding: 20px 0px 20px 0px;
     width: 100%;
     flex-direction: column;
-    justify-content: baseline;
+    justify-content: space-around;
     transition: 500ms;
 }
+
+.box1_R2_R1, .box1_R2_R2, .box1_R2_R3, .box1_R2_R4{
+    margin: 20px 0px 20px 0px;
+    width: 85%;
+    height: fit-content;
+}
+
+.box1_R2_date1,  .box1_R2_date2,  .box1_R2_date3,  .box1_R2_date4{
+    padding: 10px 0px 10px 0px;
+}
+
+.box1_R2_weatherIcon1, .box1_R2_weatherIcon2, .box1_R2_weatherIcon3, .box1_R2_weatherIcon4{
+    padding: 10px 0px 10px 0px;
+}
+
+.box1_R2_temperature1, .box1_R2_temperature2, .box1_R2_temperature3, .box1_R2_temperature4{
+    padding: 10px 0px 10px 0px;
+}
+
+
+
 
 .footer{
     height: fit-content;
