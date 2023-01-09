@@ -185,7 +185,7 @@ body{
     justify-content: space-around;
 }
 
-.box1_R2_R1{
+.box1_R2_R1, .box1_R2_R2, .box1_R2_R3, .box1_R2_R4{
     width: 20%;
     height: 70%;
     display: flex;
@@ -193,19 +193,7 @@ body{
     background: rgb(255, 255, 255);
     border-radius: 20px;
     border: 1px solid black;
-    transition: 500ms;
     opacity: 0.8;
-} 
-
-.box1_R2_R2, .box1_R2_R3, .box1_R2_R4{
-    width: 20%;
-    height: 70%;
-    display: flex;
-    flex-direction: column;
-    background: rgb(255, 255, 255);
-    border-radius: 20px;
-    border: 1px solid black;
-    opacity: 0.9;
     transition: 500ms;
 }
 
@@ -270,17 +258,20 @@ body{
     flex-direction: column;
     width: 100%;
     height: fit-content;
+    transition: 500ms;
 }
 
 .box1_R1{
     width: 100%;
     height: fit-content;
+    transition: 500ms;
 }
 
 .box1_R2{
     width: 100%;
     flex-direction: column;
     justify-content: baseline;
+    transition: 500ms;
 }
 
 .footer{
