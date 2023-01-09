@@ -56,12 +56,8 @@ export class AppComponent implements OnInit {
   }
 
   setBackground(){
-    if (this.selectedCity == this.cities[0]) {
-      this.cityBackground = '../assets/warsaw.jpg';
-    }
-    if (this.selectedCity == this.cities[1]) {
-      this.cityBackground = '../assets/london.jpg'
-    }
+    (this.selectedCity == this.cities[0]) ? this.cityBackground = '../assets/warsaw.jpg' : "";
+    (this.selectedCity == this.cities[1]) ? this.cityBackground = '../assets/london.jpg' : "";
     return this.cityBackground;
   }
 
