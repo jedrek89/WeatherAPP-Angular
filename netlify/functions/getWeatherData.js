@@ -7,7 +7,6 @@ exports.handler = async function(event, context, param1, param2) {
     return{
     statusCode: 200,
     body: JSON.stringify({message: data})
-    // ("https://worldtimeapi.org/api/timezone/europe/berlin")
     }
 
 }

@@ -23,6 +23,8 @@ export class AppComponent implements OnInit {
   dayOfWeek: string [] = ["Sunday", "Monday", 'Tuesday', 'Wednesday', "Thursday", "Friday", "Saturday"];
   cities: string[] = ["Amsterdam", "Berlin", "Bern", "Brussels", "Budapest", "Copenhagen", "Dublin", "Helsinki", 
   "London", "Madrid", "Oslo", "Paris", "Prague", "Rome", "Stockholm", "Warsaw", "Zagreb"];
+  timeFromAPI: any;
+
   constructor(private WorldTimeService: WorldTimeService) { }
 
   ngOnInit() {
@@ -31,7 +33,7 @@ export class AppComponent implements OnInit {
     this.currentConditionBackground = '../assets/cloudyBackgroundBlur.jpg';
     this.WorldTimeService.getTimeFromAPI().subscribe((data: any) => {
       this.worldTimeDataFromApi = data
-      console.log(this.worldTimeDataFromApi);
+      console.log("this.worldTimeDataFromApi", this.worldTimeDataFromApi.message.datetime);
     });
   }
 
@@ -74,7 +76,7 @@ export class AppComponent implements OnInit {
 
 // setInterval(() => {this.time1 = dateTimeFromAPI.timeString}, 1000);
 
-// export function clock(val1: number, val2: number, val3: number){
+// function clock(val1: number, val2: number, val3: number){
 //   // increase seconds
 //   val1++;
 //   if (val1 == 60) {
