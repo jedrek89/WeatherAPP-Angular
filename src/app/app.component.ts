@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from './services/weather.service';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { WorldTimeService } from './services/world-time.service';
+import { WeatherService } from './services/weather.service';
 import { Console } from 'console';
 
 @Component({
@@ -35,17 +35,21 @@ export class AppComponent implements OnInit {
     secondsSync: 0,
     timeString: '',
   }
+
   interval: any; // set interval function
   timeOffset: number = 0;
+  weatherDataFromAPI: any;
 
-  constructor(private WorldTimeService: WorldTimeService) { }
+  constructor(private WorldTimeService: WorldTimeService, private WeatherService: WeatherService) { }
 
   ngOnInit() {
     this.syncTimeWithAPI();
     this.autocompleteStatus1 = 0;
     this.selectedCity = "Warsaw";
+    this.setBackground2(this.selectedCity);
     this.currentConditionBackground = '../assets/cloudyBackgroundBlur.jpg';
     this.loop1s();
+    this.getWeatherDataFromAPI('Warsaw');
   }
 
   ngOnDestroy() {
@@ -55,9 +59,16 @@ export class AppComponent implements OnInit {
   loop1s() {
     this.interval = setInterval(() => {
     this.clock(this.timeFromAPI.secondsSync, this.timeFromAPI.minutesSync, this.timeFromAPI.hoursWithOffset)
-
   },1000)
 }
+
+  // Get weather data
+  getWeatherDataFromAPI(target: string){
+    this.WeatherService.getWeatherData(target).subscribe((data :any) => {
+    this.weatherDataFromAPI = data;
+    console.log("this.weatherDataFromAPI", this.weatherDataFromAPI);
+    })
+  }
 
   // Get date & time from API UTC+1 Berlin/Warsaw
   syncTimeWithAPI(){
@@ -76,16 +87,17 @@ export class AppComponent implements OnInit {
     console.log("this.selectedCity", data);
     this.selectedCity = data;
     // set UTC offet for cities
-    (this.selectedCity == 'Warsaw' || this.selectedCity == 'Amsterdam' || this.selectedCity == 'Berlin' || this.selectedCity == 'Bern' || 
-    this.selectedCity == 'Brussels' || this.selectedCity == 'Budapest' || this.selectedCity == 'Copenhagen' || this.selectedCity == 'Madrit' || 
-    this.selectedCity == 'Oslo' || this.selectedCity == 'Paris' || this.selectedCity == 'Prague' || this.selectedCity == 'Rome' ||
-    this.selectedCity == 'Stockholm' || this.selectedCity == 'Zagreb') ? this.timeFromAPI.hoursWithOffset = this.timeFromAPI.hoursSync + 1 : "";
-    (this.selectedCity == 'Dublin' || this.selectedCity == 'London') ? 
-    this.timeFromAPI.hoursWithOffset = this.timeFromAPI.hoursSync + 0 : "";
-    (this.selectedCity == 'Helsinki') ? this.timeFromAPI.hoursWithOffset = this.timeFromAPI.hoursSync + 2 : "";
+    if (this.selectedCity == 'Helsinki') {
+      this.timeFromAPI.hoursWithOffset = this.timeFromAPI.hoursSync + 2;
+    }
+    else if (this.selectedCity == 'Dublin' || this.selectedCity == 'London') {
+      this.timeFromAPI.hoursWithOffset = this.timeFromAPI.hoursSync + 0;
+    } else {
+      this.timeFromAPI.hoursWithOffset = this.timeFromAPI.hoursSync + 1
+    }
 
     // set background for box1R2
-    this.setBackground2();
+    this.setBackground2(this.selectedCity);
     this.autocompleteStatus1 = 0;
     return this.selectedCity;
   }
@@ -107,17 +119,14 @@ export class AppComponent implements OnInit {
 
   // Set background for R1 of box
   setBackground1(){
-    
     return this.currentConditionBackground;
   }
 
   // Set background for R2 of box
-  setBackground2(){
+  setBackground2(cityName :string){
     this.cityBackground = `../assets/${this.selectedCity}.jpg`
     return this.cityBackground;
   }
-
-
 
   clock(val1: number, val2: number, val3: number){
     // increase seconds
