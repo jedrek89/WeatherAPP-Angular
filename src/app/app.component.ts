@@ -3,9 +3,9 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
-import { WorldTimeService } from './services/world-time.service';
 import { WeatherService } from './services/weather.service';
 import { Console } from 'console';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-root',
@@ -31,24 +31,23 @@ export class AppComponent implements OnInit {
     dateSliced: '',
     hoursSync: 0,
     hoursWithOffset: 0,
-    minutesSync: 0,
-    secondsSync: 0,
     timeString: '',
   }
 
-  interval: any; // set interval function
-  timeOffset: number = 0;
+  newDate = new Date();
+  newDateOffset: number = 0;
+  interval: any;
   weatherDataFromAPI: any;
 
-  constructor(private WorldTimeService: WorldTimeService, private WeatherService: WeatherService) { }
+  constructor(private WeatherService: WeatherService) { }
 
   ngOnInit() {
-    this.syncTimeWithAPI();
+    // this.syncTimeWithAPI();
     this.autocompleteStatus1 = 0;
     this.selectedCity = "Warsaw";
     this.setBackground2(this.selectedCity);
     this.currentConditionBackground = '../assets/cloudyBackgroundBlur.jpg';
-    this.loop1s();
+    this.clock(this.selectedCity);
     this.getWeatherDataFromAPI('Warsaw');
   }
 
@@ -56,9 +55,25 @@ export class AppComponent implements OnInit {
     clearInterval(this.interval)
   }
 
-  loop1s() {
+  clock(selectedCity : string) {
+      if (this.selectedCity == 'Helsinki') {
+        this.newDateOffset = 2;
+      }
+      else if (this.selectedCity == 'Dublin' || this.selectedCity == 'London') {
+        this.newDateOffset = 0;
+      } else {
+        this.newDateOffset = 1;
+      }
+
     this.interval = setInterval(() => {
-    this.clock(this.timeFromAPI.secondsSync, this.timeFromAPI.minutesSync, this.timeFromAPI.hoursWithOffset)
+      let timeData;
+      let date;
+      let time;
+
+      let d = new Date();
+      let utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+      let nd = new Date(utc + (3600000*this.timeFromAPI.hoursWithOffset));
+      timeData = nd.toLocaleString();
   },1000)
 }
 
@@ -68,19 +83,6 @@ export class AppComponent implements OnInit {
     this.weatherDataFromAPI = data;
     console.log("this.weatherDataFromAPI", this.weatherDataFromAPI);
     })
-  }
-
-  // Get date & time from API UTC+1 Berlin/Warsaw
-  syncTimeWithAPI(){
-    this.WorldTimeService.getTimeFromAPI().subscribe((data: any) => {
-      this.timeFromAPI.utcDateTimeApi = data.message.utc_datetime;
-      this.timeFromAPI.dayOfWeekApi = data.message.day_of_week;
-      this.timeFromAPI.hoursSync = parseInt(data.message.utc_datetime.slice(11, 13));
-      this.timeFromAPI.minutesSync = parseInt(data.message.utc_datetime.slice(14, 16));
-      this.timeFromAPI.secondsSync = parseInt(data.message.utc_datetime.slice(17, 19));
-      this.timeFromAPI.hoursWithOffset = this.timeFromAPI.hoursSync; 
-    });
-    return this.timeFromAPI;
   }
 
   autocomplete1_confirm(data: string){
@@ -128,35 +130,6 @@ export class AppComponent implements OnInit {
     return this.cityBackground;
   }
 
-  clock(val1: number, val2: number, val3: number){
-    // increase seconds
-    val1++;
-    if (val1 == 60) {
-      val2++;
-      val1 = 0;
-    }
-    // increase minutes
-    if (val2 == 60) {
-      val3++;
-      val2 = 0;
-    }
-    // increase hours
-    if (val3 == 24) {
-      val3 = 0;
-    }
-    this.timeFromAPI.secondsSync = val1;
-    this.timeFromAPI.minutesSync = val2;
-    this.timeFromAPI.hoursWithOffset = val3;
-    let tempVal1;
-    let tempVal2;
-    let tempVal3;
-    (val1 < 10) ? tempVal1 = `0${val1}` : tempVal1 = val1;
-    (val2 < 10) ? tempVal2 = `0${val2}` : tempVal2 = val2;
-    (val3 < 10) ? tempVal3 = `0${val3}` : tempVal3 = val3;
-    this.timeFromAPI.timeString = tempVal3 + ":" + tempVal2 + ":" + tempVal1;
-    
-    return this.timeFromAPI;
-  }
 }
 
 

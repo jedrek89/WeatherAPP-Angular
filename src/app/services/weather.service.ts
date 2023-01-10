@@ -18,7 +18,7 @@ export class WeatherService {
     this.http.post(`/.netlify/functions/getWeatherData`, this.param).subscribe(response => 
       {
             this.weatherData = response;
-            console.log("API response", this.weatherData);
+            console.log("weatherAPI response", this.weatherData);
           }, (error) => {
             console.log('error in getWeatherData: ', error);
           })

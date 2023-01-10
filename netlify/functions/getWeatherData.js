@@ -12,7 +12,7 @@ exports.handler = async function(event, context, callback) {
     else{
         let eventBody = JSON.parse(event.body); // convert JSON fromat to object
         // API call
-        console.log("event.body", event.body.param);
+        console.log("event.body", event.body);
         let response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=warsaw&units=metric&lang=en&&appid=${process.env.OpenWeatherKEY}`);
         response = await response.json()
         return{
