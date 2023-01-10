@@ -24,11 +24,13 @@ export class AppComponent implements OnInit {
   dayOfWeek: string [] = ["Sunday", "Monday", 'Tuesday', 'Wednesday', "Thursday", "Friday", "Saturday"];
   cities: string[] = ["Amsterdam", "Berlin", "Bern", "Brussels", "Budapest", "Copenhagen", "Dublin", "Helsinki", 
   "London", "Madrid", "Oslo", "Paris", "Prague", "Rome", "Stockholm", "Warsaw", "Zagreb"];
+  
   timeFromAPI = {
     utcDateTimeApi: '',
     dayOfWeekApi: 0,
     dateSliced: '',
     hoursSync: 0,
+    hoursWithOffset: 0,
     minutesSync: 0,
     secondsSync: 0,
     timeString: '',
@@ -39,10 +41,10 @@ export class AppComponent implements OnInit {
   constructor(private WorldTimeService: WorldTimeService) { }
 
   ngOnInit() {
+    this.syncTimeWithAPI();
     this.autocompleteStatus1 = 0;
     this.selectedCity = "Warsaw";
     this.currentConditionBackground = '../assets/cloudyBackgroundBlur.jpg';
-    this.syncTimeWithAPI();
     this.loop1s();
   }
 
@@ -52,7 +54,7 @@ export class AppComponent implements OnInit {
 
   loop1s() {
     this.interval = setInterval(() => {
-    this.clock(this.timeFromAPI.secondsSync, this.timeFromAPI.minutesSync, this.timeFromAPI.hoursSync, this.timeOffset)
+    this.clock(this.timeFromAPI.secondsSync, this.timeFromAPI.minutesSync, this.timeFromAPI.hoursWithOffset)
 
   },1000)
 }
@@ -60,13 +62,12 @@ export class AppComponent implements OnInit {
   // Get date & time from API UTC+1 Berlin/Warsaw
   syncTimeWithAPI(){
     this.WorldTimeService.getTimeFromAPI().subscribe((data: any) => {
-      console.log(data);
       this.timeFromAPI.utcDateTimeApi = data.message.utc_datetime;
       this.timeFromAPI.dayOfWeekApi = data.message.day_of_week;
-      this.timeFromAPI.hoursSync = data.message.utc_datetime.slice(11, 13);
-      this.timeFromAPI.minutesSync = data.message.utc_datetime.slice(14, 16);
-      this.timeFromAPI.secondsSync = data.message.utc_datetime.slice(17, 19);
-      console.log("this.timeFromAPI", this.timeFromAPI);
+      this.timeFromAPI.hoursSync = parseInt(data.message.utc_datetime.slice(11, 13));
+      this.timeFromAPI.minutesSync = parseInt(data.message.utc_datetime.slice(14, 16));
+      this.timeFromAPI.secondsSync = parseInt(data.message.utc_datetime.slice(17, 19));
+      this.timeFromAPI.hoursWithOffset = this.timeFromAPI.hoursSync; 
     });
     return this.timeFromAPI;
   }
@@ -74,6 +75,16 @@ export class AppComponent implements OnInit {
   autocomplete1_confirm(data: string){
     console.log("this.selectedCity", data);
     this.selectedCity = data;
+    // set UTC offet for cities
+    (this.selectedCity == 'Warsaw' || this.selectedCity == 'Amsterdam' || this.selectedCity == 'Berlin' || this.selectedCity == 'Bern' || 
+    this.selectedCity == 'Brussels' || this.selectedCity == 'Budapest' || this.selectedCity == 'Copenhagen' || this.selectedCity == 'Madrit' || 
+    this.selectedCity == 'Oslo' || this.selectedCity == 'Paris' || this.selectedCity == 'Prague' || this.selectedCity == 'Rome' ||
+    this.selectedCity == 'Stockholm' || this.selectedCity == 'Zagreb') ? this.timeFromAPI.hoursWithOffset = this.timeFromAPI.hoursSync + 1 : "";
+    (this.selectedCity == 'Dublin' || this.selectedCity == 'London') ? 
+    this.timeFromAPI.hoursWithOffset = this.timeFromAPI.hoursSync + 0 : "";
+    (this.selectedCity == 'Helsinki') ? this.timeFromAPI.hoursWithOffset = this.timeFromAPI.hoursSync + 2 : "";
+
+    // set background for box1R2
     this.setBackground2();
     this.autocompleteStatus1 = 0;
     return this.selectedCity;
@@ -108,7 +119,7 @@ export class AppComponent implements OnInit {
 
 
 
-  clock(val1: number, val2: number, val3: number, val4: number){
+  clock(val1: number, val2: number, val3: number){
     // increase seconds
     val1++;
     if (val1 == 60) {
@@ -126,18 +137,15 @@ export class AppComponent implements OnInit {
     }
     this.timeFromAPI.secondsSync = val1;
     this.timeFromAPI.minutesSync = val2;
-    this.timeFromAPI.hoursSync = val3;
+    this.timeFromAPI.hoursWithOffset = val3;
     let tempVal1;
     let tempVal2;
     let tempVal3;
     (val1 < 10) ? tempVal1 = `0${val1}` : tempVal1 = val1;
     (val2 < 10) ? tempVal2 = `0${val2}` : tempVal2 = val2;
     (val3 < 10) ? tempVal3 = `0${val3}` : tempVal3 = val3;
-    // if value < 0 add 0 + val;
     this.timeFromAPI.timeString = tempVal3 + ":" + tempVal2 + ":" + tempVal1;
-    // dateTimeFromAPI.dtTxt = (dateTimeFromAPI.date + " " + dateTimeFromAPI.timeString);
-    // // return console.log("time in app components: ",dateTimeFromAPI);
-    console.log("this.timeFromAPI.timeString", this.timeFromAPI.timeString);
+    
     return this.timeFromAPI;
   }
 }
