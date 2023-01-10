@@ -3,7 +3,8 @@
     <div class="box1">
       <div id="box1_R1" class="box1_R1" [ngStyle]="{'background-image': 'url(' + currentConditionBackground + ')'}">
         <div class="box1_R1_C1">
-            <input (click)="showAutocomplete1()" #city class="searchBox1" placeholder="Chose city from list" type="text" [(ngModel)]="selectedCity" value="{{selectedCity}}" (keyup)="getInput1(selectedCity)" >
+          Select a city from the list:<br>
+            <input (click)="showAutocomplete1()" #city class="searchBox1" placeholder="Select a city from the list" type="text" [(ngModel)]="selectedCity" value="{{selectedCity}}" (keyup)="getInput1(selectedCity)" >
             <div [ngClass]="{'showAutocomplete1': this.autocompleteStatus1 == 1, 'hideItem': this.autocompleteStatus1 == 0}">
             <option class="option" (click)="autocomplete1_confirm(city)" [value]="city" *ngFor="let city of cities; let i=index;">{{city}}</option>
           </div>

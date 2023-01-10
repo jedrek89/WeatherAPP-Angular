@@ -42,3 +42,7 @@ testem.log
 Thumbs.db
 .env
 toDo.txt
+# Local Netlify folder
+.netlify
+# Backup copy of assets
+src/assets/copy

@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.autocompleteStatus1 = 0;
+    this.selectedCity = "Warsaw";
     this.currentConditionBackground = '../assets/cloudyBackgroundBlur.jpg';
     this.WorldTimeService.getTimeFromAPI().subscribe((data: any) => {
       this.worldTimeDataFromApi = data
