@@ -74,7 +74,7 @@ export class AppComponent implements OnInit {
       let nd = new Date(utc + (3600000 * this.newDateOffset));
       timeData = nd.toLocaleString();
       this.timeData = timeData;
-      let dayOfWeek = d.getDay();
+      let dayOfWeek = nd.getDay();
       this.dayOfWeek = this.daysOfWeek[dayOfWeek];
   },1000)
 }
@@ -90,8 +90,6 @@ export class AppComponent implements OnInit {
   autocomplete1_confirm(data: string){
     console.log("this.selectedCity", data);
     this.selectedCity = data;
-
-
     // set background for box1R2
     this.setBackground2(this.selectedCity);
     this.autocompleteStatus1 = 0;
