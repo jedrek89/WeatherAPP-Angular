@@ -11,12 +11,11 @@ import { rejects } from 'assert';
 })
 
 export class AppComponent implements OnInit {
+  weatherDataFromAPI: any;
   autocompleteStatus1: any;
-  // worldTimeDataFromApi: any;
   cityBackground: string = "";
   currentConditionBackground: string = "";
   currentDate = new Date();
-  // myControl = new FormControl('');
   selectedCity: string = "";
   dayOfWeek: string = "";
   daysOfWeek: string [] = ["Sunday", "Monday", 'Tuesday', 'Wednesday', "Thursday", "Friday", "Saturday"];
@@ -36,16 +35,12 @@ export class AppComponent implements OnInit {
   timeData: any;
   newDateOffset: number = 0;
   interval: any;
-  weatherDataFromAPI: any;
 
   constructor(private WeatherService: WeatherService) { }
 
   ngOnInit() {
-    this.selectedCity = 'Warsaw';
     this.autocompleteStatus1 = 0;
-    this.WeatherService.getWeatherData(this.selectedCity);
     this.clock();
-    this.setBackground2(this.selectedCity);
   }
 
   ngOnDestroy() {
@@ -77,7 +72,10 @@ export class AppComponent implements OnInit {
 
   // Get weather data
 getWeatherDataFromAPI(target: string){
-    this.WeatherService.getWeatherData(target);
+  this.WeatherService.getWeatherFromBackend(target).subscribe((data:any) =>{
+    console.log("data in app.component", this.weatherDataFromAPI);
+    this.weatherDataFromAPI = data;
+  });
 };
     
 
