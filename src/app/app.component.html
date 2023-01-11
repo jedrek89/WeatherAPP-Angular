@@ -11,9 +11,9 @@
         </div>
 
         <div class="box1_R1_C2">
-          <div class="timeAPI" id="timeAPI">{{this.newDate | date:'H:mm:ss'}}</div>
-          <div class="dayOfWeekAPI" id="dayOfWeekAPI">{{this.dayOfWeek[this.timeFromAPI.dayOfWeekApi]}}</div>
-          <div class="dateAPI" id="dateAPI">23 January 2023</div>
+          <div class="timeAPI" id="timeAPI">{{this.timeData | slice: -8}}</div>
+          <div class="dayOfWeekAPI" id="dayOfWeekAPI">{{this.dayOfWeek}}</div>
+          <div class="dateAPI" id="dateAPI">{{this.timeData | slice: 0: 10}}</div>
         </div>
 
         <div class="box1_R1_C3">

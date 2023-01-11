@@ -21,7 +21,8 @@ export class AppComponent implements OnInit {
   currentDate = new Date();
   myControl = new FormControl('');
   selectedCity: string = "";
-  dayOfWeek: string [] = ["Sunday", "Monday", 'Tuesday', 'Wednesday', "Thursday", "Friday", "Saturday"];
+  dayOfWeek: string = "";
+  daysOfWeek: string [] = ["Sunday", "Monday", 'Tuesday', 'Wednesday', "Thursday", "Friday", "Saturday"];
   cities: string[] = ["Amsterdam", "Berlin", "Bern", "Brussels", "Budapest", "Copenhagen", "Dublin", "Helsinki", 
   "London", "Madrid", "Oslo", "Paris", "Prague", "Rome", "Stockholm", "Warsaw", "Zagreb"];
   
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit {
   }
 
   newDate = new Date();
+  timeData: any;
   newDateOffset: number = 0;
   interval: any;
   weatherDataFromAPI: any;
@@ -47,7 +49,7 @@ export class AppComponent implements OnInit {
     this.selectedCity = "Warsaw";
     this.setBackground2(this.selectedCity);
     this.currentConditionBackground = '../assets/cloudyBackgroundBlur.jpg';
-    this.clock(this.selectedCity);
+    this.clock();
     this.getWeatherDataFromAPI('Warsaw');
   }
 
@@ -55,25 +57,25 @@ export class AppComponent implements OnInit {
     clearInterval(this.interval)
   }
 
-  clock(selectedCity : string) {
-      if (this.selectedCity == 'Helsinki') {
-        this.newDateOffset = 2;
-      }
-      else if (this.selectedCity == 'Dublin' || this.selectedCity == 'London') {
-        this.newDateOffset = 0;
-      } else {
-        this.newDateOffset = 1;
-      }
-
+  clock() {
     this.interval = setInterval(() => {
+    // set UTC offet for cities
+    if (this.selectedCity == 'Helsinki') {
+      this.newDateOffset = 2;
+    }
+    else if (this.selectedCity == 'Dublin' || this.selectedCity == 'London') {
+      this.newDateOffset = 0;
+    } else {
+      this.newDateOffset = 1;
+    }
       let timeData;
-      let date;
-      let time;
-
       let d = new Date();
       let utc = d.getTime() + (d.getTimezoneOffset() * 60000);
-      let nd = new Date(utc + (3600000*this.timeFromAPI.hoursWithOffset));
+      let nd = new Date(utc + (3600000 * this.newDateOffset));
       timeData = nd.toLocaleString();
+      this.timeData = timeData;
+      let dayOfWeek = d.getDay();
+      this.dayOfWeek = this.daysOfWeek[dayOfWeek];
   },1000)
 }
 
@@ -88,15 +90,7 @@ export class AppComponent implements OnInit {
   autocomplete1_confirm(data: string){
     console.log("this.selectedCity", data);
     this.selectedCity = data;
-    // set UTC offet for cities
-    if (this.selectedCity == 'Helsinki') {
-      this.timeFromAPI.hoursWithOffset = this.timeFromAPI.hoursSync + 2;
-    }
-    else if (this.selectedCity == 'Dublin' || this.selectedCity == 'London') {
-      this.timeFromAPI.hoursWithOffset = this.timeFromAPI.hoursSync + 0;
-    } else {
-      this.timeFromAPI.hoursWithOffset = this.timeFromAPI.hoursSync + 1
-    }
+
 
     // set background for box1R2
     this.setBackground2(this.selectedCity);
