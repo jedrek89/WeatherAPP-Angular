@@ -3,8 +3,7 @@
     <div class="box1">
       <div id="box1_R1" class="box1_R1" [ngStyle]="{'background-image': 'url(' + currentConditionBackground + ')'}">
         <div class="box1_R1_C1">
-          Select a city from the list:<br>
-            <input (click)="showAutocomplete1()" #city class="searchBox1" placeholder="Select a city from the list" type="text" [(ngModel)]="selectedCity" value="{{selectedCity}}" (keyup)="getInput1(selectedCity)" >
+            <input (click)="showAutocomplete1()" #city class="searchBox1" placeholder="Select city" type="text" [(ngModel)]="selectedCity" value="{{selectedCity}}" (keyup)="getInput1(selectedCity)" >
             <div [ngClass]="{'showAutocomplete1': this.autocompleteStatus1 == 1, 'hideItem': this.autocompleteStatus1 == 0}">
             <option class="option" (click)="autocomplete1_confirm(city)" [value]="city" *ngFor="let city of cities; let i=index;">{{city}}</option>
           </div>
@@ -20,7 +19,8 @@
           <div id="weatherIcon1" class="weatherIcon1">
             <img src="../assets/clear sky.svg" width="160px" height="100px">
           </div>
-          <div id="temperature1" class="temperature1">20 &deg;C</div>
+          <div id="temperature1" ngClass="temperature1" *ngIf="this.weatherDataFromAPI">{{this.weatherDataFromAPI.list[0].main.temp}}&deg;C</div>
+          <!-- <div id="temperature1" class="temperature1"></div> -->
           <div id="description1" class="description1">Despcription</div>
         </div>
 

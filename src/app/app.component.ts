@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-// import { FormControl } from '@angular/forms';
-// import { Observable } from 'rxjs';
-// import { startWith } from 'rxjs/operators';
-// import { map } from 'rxjs/operators';
 import { WeatherService } from './services/weather.service';
-// import { Console } from 'console';
-// import { ThisReceiver } from '@angular/compiler';
+import { Observable } from 'rxjs';
+import { resolve } from 'dns';
+import { rejects } from 'assert';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +12,7 @@ import { WeatherService } from './services/weather.service';
 
 export class AppComponent implements OnInit {
   autocompleteStatus1: any;
-  worldTimeDataFromApi: any;
+  // worldTimeDataFromApi: any;
   cityBackground: string = "";
   currentConditionBackground: string = "";
   currentDate = new Date();
@@ -44,13 +41,11 @@ export class AppComponent implements OnInit {
   constructor(private WeatherService: WeatherService) { }
 
   ngOnInit() {
-    // this.syncTimeWithAPI();
+    this.selectedCity = 'Warsaw';
     this.autocompleteStatus1 = 0;
-    this.selectedCity = "Warsaw";
-    this.setBackground2(this.selectedCity);
-    this.currentConditionBackground = '../assets/cloudyBackgroundBlur.jpg';
+    this.WeatherService.getWeatherData(this.selectedCity);
     this.clock();
-    this.getWeatherDataFromAPI('Warsaw');
+    this.setBackground2(this.selectedCity);
   }
 
   ngOnDestroy() {
@@ -79,19 +74,17 @@ export class AppComponent implements OnInit {
   },1000)
 }
 
+
   // Get weather data
-  getWeatherDataFromAPI(target: string){
-    this.WeatherService.getWeatherData(target).subscribe((data :any) => {
-    this.weatherDataFromAPI = data;
-    console.log("this.weatherDataFromAPI", this.weatherDataFromAPI);
-    })
-  }
+getWeatherDataFromAPI(target: string){
+    this.WeatherService.getWeatherData(target);
+};
+    
 
   autocomplete1_confirm(data: string){
-    console.log("this.selectedCity", data);
+    this.autocompleteStatus1 = 0;
     this.selectedCity = data;
     // set background for box1R2
-    this.autocompleteStatus1 = 0;
     this.setBackground2(this.selectedCity);
     this.getWeatherDataFromAPI(this.selectedCity);
     return this.selectedCity;
@@ -127,4 +120,8 @@ export class AppComponent implements OnInit {
 
 
 
+
+function subscribe(arg0: (data: any) => void) {
+  throw new Error('Function not implemented.');
+}
 
