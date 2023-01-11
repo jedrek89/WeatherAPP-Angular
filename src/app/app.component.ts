@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { startWith } from 'rxjs/operators';
-import { map } from 'rxjs/operators';
+// import { FormControl } from '@angular/forms';
+// import { Observable } from 'rxjs';
+// import { startWith } from 'rxjs/operators';
+// import { map } from 'rxjs/operators';
 import { WeatherService } from './services/weather.service';
-import { Console } from 'console';
-import { ThisReceiver } from '@angular/compiler';
+// import { Console } from 'console';
+// import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   cityBackground: string = "";
   currentConditionBackground: string = "";
   currentDate = new Date();
-  myControl = new FormControl('');
+  // myControl = new FormControl('');
   selectedCity: string = "";
   dayOfWeek: string = "";
   daysOfWeek: string [] = ["Sunday", "Monday", 'Tuesday', 'Wednesday', "Thursday", "Friday", "Saturday"];
@@ -91,8 +91,9 @@ export class AppComponent implements OnInit {
     console.log("this.selectedCity", data);
     this.selectedCity = data;
     // set background for box1R2
-    this.setBackground2(this.selectedCity);
     this.autocompleteStatus1 = 0;
+    this.setBackground2(this.selectedCity);
+    this.getWeatherDataFromAPI(this.selectedCity);
     return this.selectedCity;
   }
 
