@@ -11,7 +11,7 @@
 
         <div class="box1_R1_C2">
           <div class="timeAPI" id="timeAPI">{{this.timeData | slice: -8}}</div>
-          <div class="dayOfWeekAPI" id="dayOfWeekAPI">{{this.dayOfWeek}}</div>
+          <div class="dayOfWeekAPI" id="dayOfWeekAPI">{{this.dayOfWeekName}}</div>
           <div class="dateAPI" id="dateAPI">{{this.timeData | slice: 0: 10}}</div>
         </div>
 
@@ -32,28 +32,28 @@
       <div id="box1_R2" class="box1_R2" 
       [ngStyle]="{'background-image': 'url(' + cityBackground + ')'}">
         <div id="box1_R2_R1" class="box1_R2_R1">
-          <div id="box1_R2_date1" class="box1_R2_date1">dayName</div>
+          <div id="box1_R2_date1" class="box1_R2_date1">{{this.nextDayName[0]}}</div>
           <div class="box1_R2_weatherIcon1">
             <img src="../assets/scattered clouds.svg" width="100px" height="60px">
           </div>
           <div id="box1_R2_temperature1" class="box1_R2_temperature1">20 &deg;C</div>
         </div>
         <div id="box1_R2_R2" class="box1_R2_R2">
-          <div id="box1_R2_date2" class="box1_R2_date2">dayName</div>
+          <div id="box1_R2_date2" class="box1_R2_date2">{{this.nextDayName[1]}}</div>
           <div class="box1_R2_weatherIcon2">
             <img src="../assets/scattered clouds.svg" width="100px" height="60px">
           </div>
           <div id="box1_R2_temperature2" class="box1_R2_temperature2">20 &deg;C</div>
         </div>
         <div id="box1_R2_R3" class="box1_R2_R3">
-          <div id="box1_R2_date3" class="box1_R2_date3">dayName</div>
+          <div id="box1_R2_date3" class="box1_R2_date3">{{this.nextDayName[2]}}</div>
           <div class="box1_R2_weatherIcon3">
             <img src="../assets/scattered clouds.svg" width="100px" height="60px">
           </div>
           <div id="box1_R2_temperature3" class="box1_R2_temperature3">20 &deg;C</div>
         </div>
         <div id="box1_R2_R4" class="box1_R2_R4">
-          <div id="box1_R2_date4" class="box1_R2_date4">dayName</div>
+          <div id="box1_R2_date4" class="box1_R2_date4">{{this.nextDayName[3]}}</div>
           <div class="box1_R2_weatherIcon4">
             <img src="../assets/scattered clouds.svg" width="100px" height="60px">
           </div>
@@ -63,7 +63,7 @@
 
     </div>
   </div>
-  <footer class="footer">{{currentDate | date: 'yyyy'}} Copyright&nbsp;<a class="footerLink" href="https://github.com/jedrek89">©JEDREK89</a></footer>
+  <footer (click)="this.getNextDayName()" class="footer">{{currentDate | date: 'yyyy'}} Copyright&nbsp;<a class="footerLink" href="https://github.com/jedrek89">©JEDREK89</a></footer>
 </body>
 
 

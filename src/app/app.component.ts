@@ -17,11 +17,14 @@ export class AppComponent implements OnInit {
   currentConditionBackground: string = "";
   currentDate = new Date();
   selectedCity: string = "";
-  dayOfWeek: string = "";
-  daysOfWeek: string [] = ["Sunday", "Monday", 'Tuesday', 'Wednesday', "Thursday", "Friday", "Saturday"];
+  dayOfWeekNum: number = 0;
+  dayOfWeekName: string = "";
+  daysOfWeekName: string [] = ["Sunday", "Monday", 'Tuesday', 'Wednesday', "Thursday", "Friday", "Saturday"];
   cities: string[] = ["Amsterdam", "Berlin", "Bern", "Brussels", "Budapest", "Copenhagen", "Dublin", "Helsinki", 
   "London", "Madrid", "Oslo", "Paris", "Prague", "Rome", "Stockholm", "Warsaw", "Zagreb"];
   
+  nextDayName: string [] = [];
+
   timeFromAPI = {
     utcDateTimeApi: '',
     dayOfWeekApi: 0,
@@ -41,6 +44,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.autocompleteStatus1 = 0;
     this.clock();
+    this.getNextDayName();
   }
 
   ngOnDestroy() {
@@ -64,8 +68,8 @@ export class AppComponent implements OnInit {
       let nd = new Date(utc + (3600000 * this.newDateOffset));
       timeData = nd.toLocaleString();
       this.timeData = timeData;
-      let dayOfWeek = nd.getDay();
-      this.dayOfWeek = this.daysOfWeek[dayOfWeek];
+      this.dayOfWeekNum = nd.getDay();
+      this.dayOfWeekName = this.daysOfWeekName[this.dayOfWeekNum];
   },1000)
 }
 
@@ -89,16 +93,13 @@ getWeatherDataFromAPI(target: string){
   }
 
   getInput1(data: any){
-    console.log("input1val: ", data);
   }
 
   showAutocomplete1(){
-    console.log("show autocomplete");
     this.autocompleteStatus1 = 1;
   }
 
   hideAutocomplete1(){
-    console.log("hide autocomplete");
     (this.autocompleteStatus1 == 1) ? this.autocompleteStatus1 = 0 : "";
     return this.autocompleteStatus1;
   }
@@ -114,12 +115,17 @@ getWeatherDataFromAPI(target: string){
     return this.cityBackground;
   }
 
+  getNextDayName(){
+    for (let index = 0; index < 4; index++) {
+      let d = new Date();
+      let utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+      let nd = new Date(utc + (3600000 * 24 * (index +1)));
+      let dayOfWeek = nd.getDay();
+      this.nextDayName[index] = this.daysOfWeekName[dayOfWeek];
+    }
+  }
+
+
 }
 
-
-
-
-function subscribe(arg0: (data: any) => void) {
-  throw new Error('Function not implemented.');
-}
 
