@@ -20,9 +20,8 @@ export class AppComponent implements OnInit {
   dayOfWeekNum: number = 0;
   dayOfWeekName: string = "";
   daysOfWeekName: string [] = ["Sunday", "Monday", 'Tuesday', 'Wednesday', "Thursday", "Friday", "Saturday"];
-  cities: string[] = ["Amsterdam", "Berlin", "Bern", "Brussels", "Budapest", "Copenhagen", "Dublin", "Helsinki", 
-  "London", "Madrid", "Oslo", "Paris", "Prague", "Rome", "Stockholm", "Warsaw", "Zagreb"];
-  
+  cities: string[] = ["Amsterdam", "Berlin", "Bern", "Brussels", "Budapest", "Copenhagen", "Dublin", "Helsinki", "London", "Madrid", "Oslo", "Paris", "Prague", "Rome", "Stockholm", "Warsaw", "Zagreb"];
+  weatherIcons: string[] = ['../assets/clear sky', '../assets/clear sky', '../assets/clear sky' ,'../assets/clear sky' ,'../assets/clear sky']; 
   nextDayName: string [] = [];
 
   timeFromAPI = {
@@ -44,7 +43,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.autocompleteStatus1 = 0;
     this.getWeatherDataFromAPI('Warsaw');
-    this.cityBackground = "../assets/Warsaw.jpg"
+    this.cityBackground = "../assets/Warsaw.jpg";
+    this.selectedCity = "Warsaw";
     this.clock();
     this.getNextDayName();
   }

@@ -157,6 +157,7 @@ body{
     width: 100%;
     height: fit-content;
     text-align: center;
+
     }
 
 .box1_R1_C4{
@@ -309,6 +310,10 @@ body{
 }
 
 .box1_R2_weatherIcon1, .box1_R2_weatherIcon2, .box1_R2_weatherIcon3, .box1_R2_weatherIcon4{
+    padding: 10px 0px 10px 0px;
+}
+
+.box1_R2_description1, .box1_R2_description2, .box1_R2_description3, .box1_R2_description4{
     padding: 10px 0px 10px 0px;
 }
 
