@@ -13,7 +13,7 @@ import { rejects } from 'assert';
 export class AppComponent implements OnInit {
   weatherDataFromAPI: any;
   autocompleteStatus1: any;
-  cityBackground: string = "";
+  cityBackground: string = "../assets/Warsaw.jpg";
   currentConditionBackground: string = "";
   currentDate = new Date();
   selectedCity: string = "";
@@ -43,6 +43,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.autocompleteStatus1 = 0;
+    this.getWeatherDataFromAPI('Warsaw');
+    this.cityBackground = "../assets/Warsaw.jpg"
     this.clock();
     this.getNextDayName();
   }
