@@ -81,7 +81,6 @@ export class AppComponent implements OnInit {
   // Get weather data
 getWeatherDataFromAPI(target: string){
   this.WeatherService.getWeatherFromBackend(target).subscribe((data:any) =>{
-    console.log("data in app.component", this.weatherDataFromAPI);
     this.weatherDataFromAPI = data;
     this.setWetaherIcon();
   });
@@ -139,7 +138,6 @@ getWeatherDataFromAPI(target: string){
     this.weatherIconIdAPI[2] = this.weatherDataFromAPI.list[16].weather[0].id
     this.weatherIconIdAPI[3] = this.weatherDataFromAPI.list[24].weather[0].id
     this.weatherIconIdAPI[4] = this.weatherDataFromAPI.list[32].weather[0].id
-    console.log(this.weatherIconIdAPI);
     for (let index = 0; index < this.weatherIconIdAPI.length; index++) {
       // Thunderstorm
       (this.weatherIconIdAPI[index] >= 200 && this.weatherIconIdAPI[index] <= 232 ) ? this.weatherIconsSet[index] = this.allWeatherIcons[0] : "";
