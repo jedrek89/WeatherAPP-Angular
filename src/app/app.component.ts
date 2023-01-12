@@ -81,7 +81,7 @@ getWeatherDataFromAPI(target: string){
     this.weatherDataFromAPI = data;
   });
 };
-    
+
 
   autocomplete1_confirm(data: string){
     this.autocompleteStatus1 = 0;
