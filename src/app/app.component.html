@@ -17,7 +17,7 @@
 
         <div class="box1_R1_C3">
           <div id="weatherIcon1" class="weatherIcon1">
-            <img src="{{weatherIcons[0]}}.svg" width="160px" height="100px">
+            <img src="{{weatherIconsSet[0]}}.svg" width="160px" height="100px">
           </div>
           <div id="temperature1" ngClass="temperature1" *ngIf="weatherDataFromAPI">{{weatherDataFromAPI.list[0].main.temp}}&deg;C</div>
           <div id="description1" ngClass="description1"*ngIf="weatherDataFromAPI">{{weatherDataFromAPI.list[0].weather[0].description}}</div>
@@ -34,7 +34,7 @@
         <div id="box1_R2_R1" ngClass="box1_R2_R1" *ngIf="weatherDataFromAPI">
           <div id="box1_R2_date1" class="box1_R2_date1">{{this.nextDayName[0]}}</div>
           <div class="box1_R2_weatherIcon1">
-            <img src="{{weatherIcons[1]}}.svg" width="100px" height="60px">
+            <img src="{{weatherIconsSet[1]}}.svg" width="100px" height="60px">
           </div>
           <div id="box1_R2_description1" class="box1_R2_description1">{{weatherDataFromAPI.list[8].weather[0].description}}</div>
           <div id="box1_R2_temperature1" ngClass="box1_R2_temperature1" *ngIf="weatherDataFromAPI">{{weatherDataFromAPI.list[8].main.temp}}&deg;C</div>
@@ -42,7 +42,7 @@
         <div id="box1_R2_R2" class="box1_R2_R2" *ngIf="weatherDataFromAPI">
           <div id="box1_R2_date2" ngClass="box1_R2_date2">{{this.nextDayName[1]}}</div>
           <div class="box1_R2_weatherIcon2">
-            <img src="{{weatherIcons[2]}}.svg" width="100px" height="60px">
+            <img src="{{weatherIconsSet[2]}}.svg" width="100px" height="60px">
           </div>
           <div id="box1_R2_description1" class="box1_R2_description1">{{weatherDataFromAPI.list[16].weather[0].description}}</div>
           <div id="box1_R2_temperature1" ngClass="box1_R2_temperature1" *ngIf="weatherDataFromAPI">{{weatherDataFromAPI.list[16].main.temp}}&deg;C</div>
@@ -50,7 +50,7 @@
         <div id="box1_R2_R3" class="box1_R2_R3" *ngIf="weatherDataFromAPI">
           <div id="box1_R2_date3" ngClass="box1_R2_date3">{{this.nextDayName[2]}}</div>
           <div class="box1_R2_weatherIcon3">
-            <img src="{{weatherIcons[3]}}.svg" width="100px" height="60px">
+            <img src="{{weatherIconsSet[3]}}.svg" width="100px" height="60px">
           </div>
           <div id="box1_R2_description1" class="box1_R2_description1">{{weatherDataFromAPI.list[24].weather[0].description}}</div>
           <div id="box1_R2_temperature1" ngClass="box1_R2_temperature1" *ngIf="weatherDataFromAPI">{{weatherDataFromAPI.list[24].main.temp}}&deg;C</div>
@@ -58,7 +58,7 @@
         <div id="box1_R2_R4" class="box1_R2_R4" *ngIf="weatherDataFromAPI">
           <div id="box1_R2_date4" ngClass="box1_R2_date4">{{this.nextDayName[3]}}</div>
           <div class="box1_R2_weatherIcon4">
-            <img src="{{weatherIcons[4]}}.svg" width="100px" height="60px">
+            <img src="{{weatherIconsSet[4]}}.svg" width="100px" height="60px">
           </div>
           <div id="box1_R2_description1" class="box1_R2_description1">{{weatherDataFromAPI.list[32].weather[0].description}}</div>
           <div id="box1_R2_temperature1" ngClass="box1_R2_temperature1" *ngIf="weatherDataFromAPI">{{weatherDataFromAPI.list[32].main.temp}}&deg;C</div>

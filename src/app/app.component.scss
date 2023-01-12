@@ -131,14 +131,14 @@ body{
     padding-top: 0px;
     display: flex;
     flex-direction: column;
-    height: 45%;
+    height: 50%;
     font-family: $font-family_1;
     font-size: 20px;
     opacity: 0.8;
 }
 
 .weatherIcon1{
-    padding: 10px 0px 0px 0px;
+    padding: 15px 0px 0px 0px;
     width: 100%;
     height: fit-content;
     display: flex;
@@ -146,7 +146,7 @@ body{
 }
 
 .temperature1{
-    padding: 10px 0px 0px 0px;
+    padding: 15px 0px 0px 0px;
     width: 100%;
     height: fit-content;
     text-align: center;
@@ -157,14 +157,13 @@ body{
     width: 100%;
     height: fit-content;
     text-align: center;
-
     }
 
 .box1_R1_C4{
     display: flex;
     flex-direction: row;
-    padding: 15px 0px 0px 0px;
-    height: 20%;
+    padding: 0px 0px 0px 0px;
+    height: 15%;
     font-family: $font-family_1;
     font-size: 16px;
     text-align: center;
@@ -226,12 +225,11 @@ body{
 .box1_R2_description1, .box1_R2_description2, .box1_R2_description3, .box1_R2_description4{
     width: 100%;
     height: 25%;
-    padding-top: 10%;
+    padding-top: 15%;
     display: flex;
     justify-content: center;
     text-align: center;
-    font-family: $font-family_2;
-    font-weight: 600;
+    font-family: $font-family_1;
     font-size: 20px;
 }
 
@@ -239,9 +237,8 @@ body{
 .box1_R2_temperature1, .box1_R2_temperature2, .box1_R2_temperature3, .box1_R2_temperature4{
     display: flex;
     justify-content: center;
-    font-size: 25px;
-    font-weight: 600;
-    font-family: $font-family_2;
+    font-family: $font-family_1;
+    font-size: 20px;
     width: 100%;
     height: 25%;
 }

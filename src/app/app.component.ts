@@ -21,7 +21,9 @@ export class AppComponent implements OnInit {
   dayOfWeekName: string = "";
   daysOfWeekName: string [] = ["Sunday", "Monday", 'Tuesday', 'Wednesday', "Thursday", "Friday", "Saturday"];
   cities: string[] = ["Amsterdam", "Berlin", "Bern", "Brussels", "Budapest", "Copenhagen", "Dublin", "Helsinki", "London", "Madrid", "Oslo", "Paris", "Prague", "Rome", "Stockholm", "Warsaw", "Zagreb"];
-  weatherIcons: string[] = ['../assets/clear sky', '../assets/clear sky', '../assets/clear sky' ,'../assets/clear sky' ,'../assets/clear sky']; 
+  allWeatherIcons: string[] = ['../assets/thunderstorm', '../assets/drizzle', '../assets/rain', '../assets/snow', '../assets/mist', '../assets/clear', '../assets/clouds']; 
+  weatherIconsSet: string[] = ['../assets/clear', '../assets/clear', '../assets/clear', '../assets/clear', '../assets/clear'];
+  weatherIconIdAPI: number[] = [];
   nextDayName: string [] = [];
 
   timeFromAPI = {
@@ -81,7 +83,10 @@ getWeatherDataFromAPI(target: string){
   this.WeatherService.getWeatherFromBackend(target).subscribe((data:any) =>{
     console.log("data in app.component", this.weatherDataFromAPI);
     this.weatherDataFromAPI = data;
+    this.setWetaherIcon();
   });
+
+  return this.weatherDataFromAPI;
 };
 
 
@@ -90,6 +95,7 @@ getWeatherDataFromAPI(target: string){
     this.selectedCity = data;
     // set background for box1R2
     this.setBackground2(this.selectedCity);
+    // fetch data from API
     this.getWeatherDataFromAPI(this.selectedCity);
     return this.selectedCity;
   }
@@ -127,6 +133,31 @@ getWeatherDataFromAPI(target: string){
     }
   }
 
+  setWetaherIcon(){
+    this.weatherIconIdAPI[0] = this.weatherDataFromAPI.list[0].weather[0].id
+    this.weatherIconIdAPI[1] = this.weatherDataFromAPI.list[8].weather[0].id
+    this.weatherIconIdAPI[2] = this.weatherDataFromAPI.list[16].weather[0].id
+    this.weatherIconIdAPI[3] = this.weatherDataFromAPI.list[24].weather[0].id
+    this.weatherIconIdAPI[4] = this.weatherDataFromAPI.list[32].weather[0].id
+    console.log(this.weatherIconIdAPI);
+    for (let index = 0; index < this.weatherIconIdAPI.length; index++) {
+      // Thunderstorm
+      (this.weatherIconIdAPI[index] >= 200 && this.weatherIconIdAPI[index] <= 232 ) ? this.weatherIconsSet[index] = this.allWeatherIcons[0] : "";
+      // Drizzle
+      (this.weatherIconIdAPI[index] >= 300 && this.weatherIconIdAPI[index] <= 321 ) ? this.weatherIconsSet[index] = this.allWeatherIcons[1] : "";
+      // Rain
+      (this.weatherIconIdAPI[index] >= 500 && this.weatherIconIdAPI[index] <= 531 ) ? this.weatherIconsSet[index] = this.allWeatherIcons[2] : "";
+      // Snow
+      (this.weatherIconIdAPI[index] >= 600 && this.weatherIconIdAPI[index] <= 622 ) ? this.weatherIconsSet[index] = this.allWeatherIcons[3] : "";
+      // Mist
+      (this.weatherIconIdAPI[index] >= 701 && this.weatherIconIdAPI[index] <= 781 ) ? this.weatherIconsSet[index] = this.allWeatherIcons[4] : "";
+      // Clear
+      (this.weatherIconIdAPI[index] >= 800 && this.weatherIconIdAPI[index] < 801 ) ? this.weatherIconsSet[index] = this.allWeatherIcons[5] : "";
+      // Clouds
+      (this.weatherIconIdAPI[index] >= 801 && this.weatherIconIdAPI[index] <= 804 ) ? this.weatherIconsSet[index] = this.allWeatherIcons[6] : "";
+    }
+    return this.weatherIconsSet;
+  }
 
 }
 
