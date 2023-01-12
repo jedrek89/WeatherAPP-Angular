@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from './services/weather.service';
-import { Observable } from 'rxjs';
-import { resolve } from 'dns';
-import { rejects } from 'assert';
 
 @Component({
   selector: 'app-root',
@@ -77,17 +74,14 @@ export class AppComponent implements OnInit {
   },1000)
 }
 
-
   // Get weather data
 getWeatherDataFromAPI(target: string){
   this.WeatherService.getWeatherFromBackend(target).subscribe((data:any) =>{
     this.weatherDataFromAPI = data;
     this.setWetaherIcon();
   });
-
   return this.weatherDataFromAPI;
 };
-
 
   autocomplete1_confirm(data: string){
     this.autocompleteStatus1 = 0;
@@ -140,19 +134,19 @@ getWeatherDataFromAPI(target: string){
     this.weatherIconIdAPI[4] = this.weatherDataFromAPI.list[32].weather[0].id
     for (let index = 0; index < this.weatherIconIdAPI.length; index++) {
       // Thunderstorm
-      (this.weatherIconIdAPI[index] >= 200 && this.weatherIconIdAPI[index] <= 232 ) ? this.weatherIconsSet[index] = this.allWeatherIcons[0] : "";
+      (this.weatherIconIdAPI[index] >= 200 && this.weatherIconIdAPI[index] <= 232) ? this.weatherIconsSet[index] = this.allWeatherIcons[0] : "";
       // Drizzle
-      (this.weatherIconIdAPI[index] >= 300 && this.weatherIconIdAPI[index] <= 321 ) ? this.weatherIconsSet[index] = this.allWeatherIcons[1] : "";
+      (this.weatherIconIdAPI[index] >= 300 && this.weatherIconIdAPI[index] <= 321) ? this.weatherIconsSet[index] = this.allWeatherIcons[1] : "";
       // Rain
-      (this.weatherIconIdAPI[index] >= 500 && this.weatherIconIdAPI[index] <= 531 ) ? this.weatherIconsSet[index] = this.allWeatherIcons[2] : "";
+      (this.weatherIconIdAPI[index] >= 500 && this.weatherIconIdAPI[index] <= 531) ? this.weatherIconsSet[index] = this.allWeatherIcons[2] : "";
       // Snow
-      (this.weatherIconIdAPI[index] >= 600 && this.weatherIconIdAPI[index] <= 622 ) ? this.weatherIconsSet[index] = this.allWeatherIcons[3] : "";
+      (this.weatherIconIdAPI[index] >= 600 && this.weatherIconIdAPI[index] <= 622) ? this.weatherIconsSet[index] = this.allWeatherIcons[3] : "";
       // Mist
-      (this.weatherIconIdAPI[index] >= 701 && this.weatherIconIdAPI[index] <= 781 ) ? this.weatherIconsSet[index] = this.allWeatherIcons[4] : "";
+      (this.weatherIconIdAPI[index] >= 701 && this.weatherIconIdAPI[index] <= 781) ? this.weatherIconsSet[index] = this.allWeatherIcons[4] : "";
       // Clear
-      (this.weatherIconIdAPI[index] >= 800 && this.weatherIconIdAPI[index] < 801 ) ? this.weatherIconsSet[index] = this.allWeatherIcons[5] : "";
+      (this.weatherIconIdAPI[index] >= 800 && this.weatherIconIdAPI[index] < 801) ? this.weatherIconsSet[index] = this.allWeatherIcons[5] : "";
       // Clouds
-      (this.weatherIconIdAPI[index] >= 801 && this.weatherIconIdAPI[index] <= 804 ) ? this.weatherIconsSet[index] = this.allWeatherIcons[6] : "";
+      (this.weatherIconIdAPI[index] >= 801 && this.weatherIconIdAPI[index] <= 804) ? this.weatherIconsSet[index] = this.allWeatherIcons[6] : "";
     }
     return this.weatherIconsSet;
   }
