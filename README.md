@@ -1,3 +1,8 @@
+Weather APP with Angular, TS, CSS/SCSS, API + backend on netlify serverless functions
+
+link to live version: https://endearing-croquembouche-8b2285.netlify.app/
+
+
 # WeatherAPPAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.6.
