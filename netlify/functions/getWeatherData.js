@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 
 exports.handler = async function(event, context, callback) {
-    if (typeof event.queryStringParameters.location === 'undefined') {
+    if (typeof event.queryStringParameters.location == 'undefined') {
         return{
             statusCode: 200,
             body: JSON.stringify("bad request") 
