@@ -302,8 +302,7 @@ body{
 
 @media screen and (max-width: 992px){
 
-    
-.box1{
+@mixin box1{
     flex-direction: column;
     width: 100%;
     height: fit-content;
@@ -311,6 +310,22 @@ body{
     border-radius: 0px;
     border: 1px solid black;
     box-shadow: none;
+}
+    
+.box1{
+    @include box1;
+}
+
+.box1Fetch{
+    @include box1;
+    opacity: 0.2;
+    transition: 200ms;
+}
+
+.fetchWarring{
+    position: fixed;
+    top: 40%;
+    left: 40%;
 }
 
 .box1_R1{
