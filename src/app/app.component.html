@@ -1,6 +1,11 @@
 <body>
+
   <div class="content">
-    <div class="box1">
+    <div [ngClass]="{'fetchWarring': this.fetchingDataStatus === 1, 'hideItem': this.fetchingDataStatus === 0}">
+      <mat-spinner class="spinner"></mat-spinner>
+      <div class="warning">reloading</div>
+    </div>
+    <div [ngClass]="{'box1': this.fetchingDataStatus === 0, 'box1Fetch': this.fetchingDataStatus === 1}">
       <div id="box1_R1" class="box1_R1" [ngStyle]="{'background-image': 'url(' + currentConditionBackground + ')'}">
         <div class="box1_R1_C1">
             <input (click)="showAutocomplete1()" #city class="searchBox1" placeholder="Select city" type="text" [(ngModel)]="selectedCity" value="{{selectedCity}}" (keyup)="getInput1(selectedCity)" >

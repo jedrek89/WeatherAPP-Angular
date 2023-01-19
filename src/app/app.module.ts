@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormControl } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { from, observable, Observable } from 'rxjs';
 import { MatSelectModule } from '@angular/material/select'; 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -19,7 +17,6 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatSlideToggleModule,
     MatAutocompleteModule,
     MatFormFieldModule,
     BrowserAnimationsModule,
@@ -27,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     MatSelectModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

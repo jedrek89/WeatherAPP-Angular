@@ -8,6 +8,7 @@ import { WeatherService } from './services/weather.service';
 })
 
 export class AppComponent implements OnInit {
+  fetchingDataStatus: number = 0;
   weatherDataFromAPI: any;
   autocompleteStatus1: any;
   cityBackground: string = "../assets/Warsaw.jpg";
@@ -76,11 +77,27 @@ export class AppComponent implements OnInit {
 
   // Get weather data
 getWeatherDataFromAPI(target: string){
-  this.WeatherService.getWeatherFromBackend(target).subscribe((data:any) =>{
-    this.weatherDataFromAPI = data;
-    this.setWetaherIcon();
+
+
+  const promise = new Promise((resolve, reject) => {
+    this.fetchingDataStatus = 1; 
+    setTimeout(() => {
+      this.WeatherService.getWeatherFromBackend(target).subscribe((data:any) =>{
+        this.weatherDataFromAPI = data;
+        this.setWetaherIcon();
+        this.fetchingDataStatus = 0; 
+      });  
+
+      return this.weatherDataFromAPI;
+      }, 500)
+  })
+  promise.then((success)=>{
+
+  })
+  .catch((error) => {
+    console.log(error);
   });
-  return this.weatherDataFromAPI;
+
 };
 
   autocomplete1_confirm(data: string){
