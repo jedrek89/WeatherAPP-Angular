@@ -3,7 +3,7 @@
   <div class="content">
     <div [ngClass]="{'fetchWarring': this.fetchingDataStatus === 1, 'hideItem': this.fetchingDataStatus === 0}">
       <mat-spinner class="spinner"></mat-spinner>
-      <div class="warning">reloading</div>
+      <div class="warning">loading</div>
     </div>
     <div [ngClass]="{'box1': this.fetchingDataStatus === 0, 'box1Fetch': this.fetchingDataStatus === 1}">
       <div id="box1_R1" class="box1_R1" [ngStyle]="{'background-image': 'url(' + currentConditionBackground + ')'}">
