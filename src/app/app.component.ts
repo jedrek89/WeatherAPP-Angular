@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
   constructor(private WeatherService: WeatherService) { }
 
   ngOnInit() {
-    this.autocompleteStatus1 = 1;
+    this.autocompleteStatus1 = 0;
     this.getWeatherDataFromAPI('Warsaw');
     this.cityBackground = "../assets/Warsaw.jpg";
     this.selectedCity = "Warsaw";
